@@ -35,12 +35,14 @@ ActiveRecord::Schema.define(version: 20140403013704) do
     t.datetime "updated_at"
   end
 
-  create_table "posts_tags", force: true do |t|
+  create_table "posts_tags", id: false, force: true do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts_tags", ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id"
 
   create_table "tags", force: true do |t|
     t.string   "title"
@@ -48,6 +50,8 @@ ActiveRecord::Schema.define(version: 20140403013704) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tags", ["title"], name: "index_tags_on_title", unique: true
 
   create_table "users", force: true do |t|
     t.string   "name"
