@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140403013704) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.string   "author"
     t.text     "content"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140403013704) do
     t.datetime "updated_at"
   end
 
-  add_index "posts_tags", ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id"
+  add_index "posts_tags", ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "title"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140403013704) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["title"], name: "index_tags_on_title", unique: true
+  add_index "tags", ["title"], name: "index_tags_on_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
