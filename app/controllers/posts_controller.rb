@@ -8,6 +8,6 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
-  	@user = User.where(id: params[:id])
+  	@user = User.where(id: @post.user_id)
   end
 end
