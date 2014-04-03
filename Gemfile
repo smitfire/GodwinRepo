@@ -7,7 +7,7 @@ gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-	gem 'sqlite3'
+	gem 'pg'
 end
 
 group :production do
@@ -51,3 +51,4 @@ end
 
 # Use debugger
   gem 'debugger', group: [:development, :test]
+gem 'rails_12factor', group: :production
