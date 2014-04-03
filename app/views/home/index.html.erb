@@ -27,20 +27,17 @@
 			<% elsif post.category == "Celebrity" %>
 						<a href="<%= post.category%>" class="btn btn-sm btn-info">
 			<% end %>
-						<%= post.category %>					
+						<%= post.date %>					
 					</a>
 					
-					<small class="pull-right"> <%= post.date %> </small>							
-					
+					<small class="pull-right"> <%= post.category %> </small>							
 					<h3>
-						<a href="<%= post.id %>">
-							<%= post.target %>
-						</a> 
+						<%= link_to post.target, post_path(post.id) %>
 							<small> was accused of...</small> 
 						</h3>
 						<br>
 						<p>
-								<%= truncate(post.excerpt, length: 50) %>
+								<%= truncate(post.excerpt, length: 93) %> <small><a href="posts/<%= post.id %>">view full</a></small>
 							</p>
 						<h3 class="">
 						<small>
