@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   def index
   end
   
@@ -8,5 +8,6 @@ class PostController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
+  	@user = User.where(id: params[:id])
   end
 end

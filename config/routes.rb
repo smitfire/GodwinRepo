@@ -1,6 +1,7 @@
 GodwinRepo::Application.routes.draw do
   
-  get "home/index"
+  
+  get "user/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,6 +14,7 @@ GodwinRepo::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :posts
+  resources :users
 
   # Example resource route with options:
   #   resources :products do

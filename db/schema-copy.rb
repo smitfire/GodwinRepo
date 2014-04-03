@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20140403013704) do
     t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.string   "pic"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
