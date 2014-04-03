@@ -11,3 +11,18 @@ header{
 *{
 	// outline:red 2px solid;
 }
+
+li {
+	list-style:none !important;
+}
+li.user_profile{
+	display:inline-block; width: 45%; height:auto;
+}
+
+li.user_profile:nth-child(odd){
+	float:left;
+}
+
+li.user_profile:nth-child(even){
+	float:right;
+}

@@ -1,21 +1,24 @@
-
-
-<div class="jumbotron">
-	<h1>The Godwin Repository</h1>
-	<p class="lead">Your source for all things "literally Hitler" on the web.</p>
-
-</div>
-
-
-
 <div class="row">
-
-	<h2>Recent entries</h2>
+	<div class="">
+	<div class="col-md-4">
+		<img src="/<%=@user.pic%>" alt="" width="140px">
+	</div>
+	<div class="col-md-8">
+		<h3><small>User :</small><span class="pull-right"><%= link_to @user.name.capitalize, user_path(@user.id) %></span></h3>
 		<hr>
-		<% @posts.each_slice(3) do |post_slice| %>
+		<h3><small>Email :</small> <span class="pull-right"> <%= @user.email.capitalize %></span></h3>
+		<hr>			
+	</div>
+	
+	</div>
+	<div class="clearfix"></div>
+	<h2 class="">Posts :</h2>
+		<hr>
 		
-		<% post_slice.each do |post| %>
-		<div class="col-md-4">
+		<% @posts.each_slice(2) do |post_slice| %>
+			
+			<% post_slice.each do |post| %>
+			<div class="col-md-6">
 			<div class="recent-entry">
 			<% if post.category == "World_Leader" %>
 					<a href="/posts/<%=post.id%>" class="btn btn-sm btn-primary"> 
@@ -37,8 +40,8 @@
 							<small> was accused of...</small> 
 						</h3>
 						<br>
-						<p>
-								<%= truncate(post.excerpt, length: 93) %> <small><a href="posts/<%= post.id %>">view full</a></small>
+						<p class="bg-info" style="padding:40px;">
+							<%= post.excerpt %>
 							</p>
 						<h3 class="">
 						<small>
@@ -48,6 +51,9 @@
 							</a>
 						</small>
 					</h3>
+					<div class="clearfix"></div>
+					<hr>
+					<h5><a href="<%=post.url%>"><%= post.url %> </a></h5>
 					<hr>
 					<% post.tags.each do |tag|%>
 							<a href="/tags/<%= tag.id %>" class="btn btn-sm btn-default">
@@ -55,25 +61,12 @@
 							</a>
 					<%end%>
 					<div class="clearfix"></div>
-					<hr>
-				</div><!-- recent entry -->
+					<br><br><br>
+					</div><!-- recent entry -->
 				</div>
+				
 			<% end %>
-		<div class="clearfix"></div>		
-	<% end %>
-	
+			<div class="clearfix"></div>
+		<% end %>
+		
 </div><!-- row -->
-
-<div class="row">
-<h3>Legend</h3>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-primary">   </button> World Leader </div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-warning">   </button> Government or Administration</div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-danger">   </button> Politician </div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-success">   </button> Law or Philosophy</div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-info">   </button> Celebrity or Pundit</div>
-
-
-</div>
-
- 
-
