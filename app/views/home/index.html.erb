@@ -13,8 +13,8 @@
 	<h2>Recent entries</h2>
 		<hr>
 		<% @posts.each_slice(3) do |post_slice| %>
-			<div class="col-md-4">
 		<% post_slice.each do |post| %>
+			<div class="col-md-4">
 			<div class="recent-entry">
 			<% if post.category == "World_Leader" %>
 					<a href="<%=post.category%>" class="btn btn-sm btn-primary"> 
@@ -53,17 +53,20 @@
 								<%= tag.title %>
 							</a>
 					<%end%>
-					<div class="clearfix"></div>
+					
 					<hr>
 				</div><!-- recent entry -->
+				</div>
 			<% end %>
-		</div>
+			<div class="clearfix"></div>
 	<% end %>
 	<div class="clearfix"></div>
 </div><!-- row -->
 
 <div class="row">
-<h3>Legend</h3>
+<h3>Legend: </h3>
+<div class="clearfix"></div>
+<hr>
 <div class="col-lg-2"><button type="button" class="btn btn-lg btn-primary">   </button> World Leader </div>
 <div class="col-lg-2"><button type="button" class="btn btn-lg btn-warning">   </button> Government or Administration</div>
 <div class="col-lg-2"><button type="button" class="btn btn-lg btn-danger">   </button> Politician </div>

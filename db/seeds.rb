@@ -21,6 +21,10 @@ bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', );
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 	
+	post.tags << Tag.find_or_create_by(title: post.category);
+	post.tags << Tag.find_or_create_by(title: post.accuser);
+	post.tags << Tag.find_or_create_by(title: post.target);
+
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: nick.id)
 	end
@@ -31,6 +35,10 @@ end
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 
+	post.tags << Tag.find_or_create_by(title: post.category);
+	post.tags << Tag.find_or_create_by(title: post.accuser);
+	post.tags << Tag.find_or_create_by(title: post.target);
+
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: rob.id)
 	end
@@ -39,6 +47,11 @@ end
 
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
+
+
+	post.tags << Tag.find_or_create_by(title: post.category);
+	post.tags << Tag.find_or_create_by(title: post.accuser);
+	post.tags << Tag.find_or_create_by(title: post.target);
 
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(1), author_id: bane.id)
