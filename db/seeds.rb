@@ -21,14 +21,6 @@ bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', );
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 	
-	tag = Tag.create(title: post.target, color: myColorArray.sample);
-	tag_1 = Tag.create(title: post.accuser, color: myColorArray.sample);
-	tag_2 = Tag.create(title: post.category, color: myColorArray.sample);
-
-	post.tags << tag
-	post.tags << tag_1
-	post.tags << tag_2
-	
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: nick.id)
 	end
@@ -39,14 +31,6 @@ end
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 
-	tag = Tag.create(title: post.target, color: myColorArray.sample);
-	tag_1 = Tag.create(title: post.accuser, color: myColorArray.sample);
-	tag_2 = Tag.create(title: post.category, color: myColorArray.sample);
-
-	post.tags << tag
-	post.tags << tag_1
-	post.tags << tag_2
-
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: rob.id)
 	end
@@ -55,14 +39,6 @@ end
 
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
-
-	tag = Tag.create(title: post.target, color: myColorArray.sample);
-	tag_1 = Tag.create(title: post.accuser, color: myColorArray.sample);
-	tag_2 = Tag.create(title: post.category, color: myColorArray.sample);
-
-	post.tags << tag
-	post.tags << tag_1
-	post.tags << tag_2
 
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(1), author_id: bane.id)
