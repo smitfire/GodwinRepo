@@ -1,0 +1,80 @@
+
+
+<div class="jumbotron">
+	<h1>The Godwin Repository</h1>
+	<p class="lead">Your source for all things "literally Hitler" on the web.</p>
+
+</div>
+
+
+
+<div class="row">
+
+	<h2>Recent entries</h2>
+		<hr>
+		<% @posts.each_slice(3) do |post_slice| %>
+			<div class="col-md-4">
+		<% post_slice.each do |post| %>
+			<div class="recent-entry">
+			<% if post.category == "World_Leader" %>
+					<a href="<%=post.category%>" class="btn btn-sm btn-primary"> 
+			<% elsif post.category == "Government" %>
+					<a href="<%= post.category%>" class="btn btn-sm btn-warning"> 
+			<% elsif post.category == "Law" %>
+						<a href="<%= post.category%>" class="btn btn-sm btn-success">
+			<% elsif post.category == "Politician" %>
+						<a href="<%= post.category%>" class="btn btn-sm btn-danger">
+			<% elsif post.category == "Celebrity" %>
+						<a href="<%= post.category%>" class="btn btn-sm btn-info">
+			<% end %>
+						<%= post.category %>					
+					</a>
+					
+					<small class="pull-right"> <%= post.date %> </small>							
+					
+					<h3>
+						<a href="<%= post.id %>">
+							<%= post.target %>
+						</a> 
+							<small> was accused of...</small> 
+						</h3>
+						<br>
+						<p>
+								<%= truncate(post.excerpt, length: 50) %>
+							</p>
+						<h3 class="">
+						<small>
+							By: 
+							<a href="".>
+								<%= post.accuser %>	
+							</a>
+						</small>
+					</h3>
+					<hr>
+					<% post.tags.each do |tag|%>
+							<a href="/tags/<%= tag.id %>" class="btn btn-sm btn-default">
+								<%= tag.title %>
+							</a>
+					<%end%>
+					<div class="clearfix"></div>
+					<hr>
+				</div><!-- recent entry -->
+			<% end %>
+		</div>
+	<% end %>
+	<div class="clearfix"></div>
+</div><!-- row -->
+
+<div class="row">
+<h3>Legend</h3>
+<div class="col-lg-2"><button type="button" class="btn btn-lg btn-primary">   </button> World Leader </div>
+<div class="col-lg-2"><button type="button" class="btn btn-lg btn-warning">   </button> Government or Administration</div>
+<div class="col-lg-2"><button type="button" class="btn btn-lg btn-danger">   </button> Politician </div>
+<div class="col-lg-2"><button type="button" class="btn btn-lg btn-success">   </button> Law or Philosophy</div>
+<div class="col-lg-2"><button type="button" class="btn btn-lg btn-info">   </button> Celebrity or Pundit</div>
+
+
+</div>
+
+ 
+

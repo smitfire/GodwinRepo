@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GodwinRepo</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+      <!-- Begin page content -->
+      <div class="container">
+        <header>
+          <nav>
+            <ul class="nav nav-pills pull-right">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><input type="search" class="form-control" placeholder="Search"></li>
+            </ul>
+          </nav>
+        </header>
+	
+		<%=yield%>
+	<hr>
+		<footer class="">
+	 		<p>&copy; Rob Scharf and Nick Smit - 2014</p>
+	    </footer>
+    </div>
+    <!-- End page content wrap -->
+</body>
+</html>
