@@ -1,7 +1,9 @@
 GodwinRepo::Application.routes.draw do
   
   
-  get "user/index"
+  # get "tags/index"
+  # get "tags/show"
+  # get "user/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,6 +17,7 @@ GodwinRepo::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :posts
   resources :users
+  resources :tags
 
   # Example resource route with options:
   #   resources :products do

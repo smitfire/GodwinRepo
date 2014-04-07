@@ -17,15 +17,15 @@
 			<div class="col-md-4">
 			<div class="recent-entry">
 			<% if post.category == "World_Leader" %>
-					<a href="<%=post.category%>" class="btn btn-sm btn-primary"> 
+					<a href="tags/<%=post.tags.first.id%>" class="btn btn-sm btn-primary"> 
 			<% elsif post.category == "Government" %>
-					<a href="<%= post.category%>" class="btn btn-sm btn-warning"> 
+					<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-warning"> 
 			<% elsif post.category == "Law" %>
-						<a href="<%= post.category%>" class="btn btn-sm btn-success">
+						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-success">
 			<% elsif post.category == "Politician" %>
-						<a href="<%= post.category%>" class="btn btn-sm btn-danger">
+						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-danger">
 			<% elsif post.category == "Celebrity" %>
-						<a href="<%= post.category%>" class="btn btn-sm btn-info">
+						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-info">
 			<% end %>
 						<%= post.date %>					
 					</a>
