@@ -13,60 +13,6 @@
 	</div>
 	<div class="clearfix"></div>
 	<h2 class="">Posts :</h2>
-		<hr>
-		
-		<% @posts.each_slice(2) do |post_slice| %>
-			
-			<% post_slice.each do |post| %>
-			<div class="col-md-6">
-			<div class="recent-entry">
-			<% if post.category == "World_Leader" %>
-					<a href="/posts/<%=post.id%>" class="btn btn-sm btn-primary"> 
-			<% elsif post.category == "Government" %>
-					<a href="/posts/<%= post.id%>" class="btn btn-sm btn-warning"> 
-			<% elsif post.category == "Law" %>
-						<a href="/posts/<%= post.id%>" class="btn btn-sm btn-success">
-			<% elsif post.category == "Politician" %>
-						<a href="/posts/<%= post.id%>" class="btn btn-sm btn-danger">
-			<% elsif post.category == "Celebrity" %>
-						<a href="/posts/<%= post.id%>" class="btn btn-sm btn-info">
-			<% end %>
-						<%= post.date %>					
-					</a>
-					
-					<small class="pull-right"> <%= post.category %> </small>							
-					<h3>
-						<%= link_to post.target, post_path(post.id) %>
-							<small> was accused of...</small> 
-						</h3>
-						<br>
-						<p class="bg-info" style="padding:40px;">
-							<%= post.excerpt %>
-							</p>
-						<h3 class="">
-						<small>
-							By: 
-							<a href="".>
-								<%= post.accuser %>	
-							</a>
-						</small>
-					</h3>
-					<div class="clearfix"></div>
-					<hr>
-					<h5><a href="<%=post.url%>"><%= post.url %> </a></h5>
-					<hr>
-					<% post.tags.each do |tag|%>
-							<a href="/tags/<%= tag.id %>" class="btn btn-sm btn-default">
-								<%= tag.title %>
-							</a>
-					<%end%>
-					<div class="clearfix"></div>
-					<br><br><br>
-					</div><!-- recent entry -->
-				</div>
-				
-			<% end %>
-			<div class="clearfix"></div>
-		<% end %>
+	<%= render "tags/posts_list" %>
 		
 </div><!-- row -->
