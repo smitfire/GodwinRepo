@@ -14,9 +14,9 @@ Tag.delete_all
 
 legendArray = ["World_Leader", "Government", "Politician", "Law", "Celebrity"]
 myColorArray = ['yellow', 'red',' blue',' green',' orange']
-nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', pic: "me_prof.jpg"); 
-rob = User.create(name: 'rob', email: 'r@r.com', password: 'r',  pic: "rob.jpeg");
-bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', pic: "b.jpg");
+nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', password_confirmation: 'n', pic: "me_prof.jpg"); 
+rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirmation: 'r', pic: "rob.jpeg");
+bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confirmation: 'b', pic: "b.jpg");
 
 15.times do 
 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
