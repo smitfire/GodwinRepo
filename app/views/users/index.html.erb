@@ -1,2 +1,17 @@
-<h1>User#index</h1>
-<p>Find me in app/views/user/index.html.erb</p>
+  <% if current_user %>
+    <% redirect_to user_posts_path %>
+  <% else %>
+  <hr>
+  <h2>The Anti-Social Network</h2><hr>    
+    <%= form_for :user, html:{class: "loginform"}, url: sessions_path do |f| %>
+    <p>
+      <%= f.text_field :email, :placeholder => "Email" %>
+    </p>
+    <p>
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </p>
+      <%= f.submit "Login" %>
+    <% end %>
+    <button id="signup">Sign Up</button>
+    <% end %>
+<%= render partial: '/users/new'%>

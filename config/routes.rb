@@ -18,6 +18,7 @@ GodwinRepo::Application.routes.draw do
   resources :posts
   resources :users
   resources :tags
+  resources :sessions
 
   # Example resource route with options:
   #   resources :products do

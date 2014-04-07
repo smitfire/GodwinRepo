@@ -18,6 +18,13 @@
               <li>
                 <%= link_to "About", page_path("about") %>
               </li>
+                <% if current_user %>
+                  <% redirect_to user_posts_path %>
+                <% else %>
+                <li>
+                <%= link_to "Log in", new_user_path %>
+                </li>
+                <%end%>
               <li><a href="#contact">Contact</a></li>
               <li><input type="search" class="form-control" placeholder="Search"></li>
             </ul>
