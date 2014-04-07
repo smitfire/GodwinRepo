@@ -12,8 +12,12 @@
         <header>
           <nav>
             <ul class="nav nav-pills pull-right">
-              <li class="active"><%= link_to "Home", root_url%></li>
-              <li><a href="about.html">About</a></li>
+              <li class="active">
+                <%= link_to "Home", root_url%>
+              </li>
+              <li>
+                <%= link_to "About", page_path("about") %>
+              </li>
               <li><a href="#contact">Contact</a></li>
               <li><input type="search" class="form-control" placeholder="Search"></li>
             </ul>
