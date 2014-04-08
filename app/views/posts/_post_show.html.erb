@@ -2,79 +2,96 @@
 	<% post = @post %>
 <% end %>
 
-<div class="row">
-	<div class="col-md-4">
-		<img src="/<%=@user.pic%>" alt="" width="140px">
-	</div>
-	<div class="col-md-8">
-		<h3><small>User :</small><span class="pull-right"><%= link_to @user.name.capitalize, user_path(@user.id) %></span></h3>
-		<hr>
-		<h3><small>Email :</small> <span class="pull-right"> <%= @user.email.capitalize %></span></h3>
-		<hr>			
-	</div>
-	<div class="clearfix"></div>
-	<hr>
-	<div class="col-md-12" >
-		<h3><small>Title : </small><span class="pull-right"><a href=""><%= post.title %></a></span></h3>
-		<hr>
-		<h3>
-			<small>
-				Date :
-			</small>
-			<span class="pull-right">
-				<% if post.category == "World_Leader" %>
-					<a href="<%=post.category%>" class="btn btn-sm btn-primary"> 
+
+      <div class="jumbotron">
+      <div class="row">
+        		
+        		<% if post.category == "World_Leader" %>
+					<div class="col-md-12 btn-sm btn-primary excerpt"> 
 				<% elsif post.category == "Government" %>
-					<a href="<%= post.category%>" class="btn btn-sm btn-warning"> 
+					<div class="col-md-12 btn-sm btn-warning excerpt"> 
 				<% elsif post.category == "Law" %>
-					<a href="<%= post.category%>" class="btn btn-sm btn-success">
+					<div class="col-md-12 btn-sm btn-success excerpt">
 				<% elsif post.category == "Politician" %>
-					<a href="<%= post.category%>" class="btn btn-sm btn-danger">
+					<div class="col-md-12 btn-sm btn-danger excerpt">
 				<% elsif post.category == "Celebrity" %>
-					<a href="<%= post.category%>" class="btn btn-sm btn-info">
+					<div class="col-md-12 bitn-sm btn-info excerpt">
 				<% end %>
-		
-				<%= post.date %>					
-				</a>
-			</span>
-		</h3>
-		<hr>
-		<h3><small>Accused : <span class="pull-right"><%= link_to post.target, post_path(post.id) %></span></small></h3>
-		<hr>
-		<h3><small>Accuser : <span class="pull-right"><%= link_to post.accuser, post_path(post.id) %></span></small></h3>
-		
-		<hr>
-		<p class="bg-info" style="padding:40px 50px; line-height:24px;">
-			<%= post.excerpt %>
-		</p>
-		<hr>
-	</div>
-	<div class="row">
-		<h4>Comments :</h4>
-		<br>
-		
-			<% post.comments.each do |comment| %>
-			<div class="col-md-3">
-				<img class="pull-right" src="/<%=comment.author.pic%>" alt="" width="80px">
-					<span class="pull-left">
-						<h5><%= link_to comment.author.name.capitalize, user_path(comment.author.id) %></h5>
-						<hr>
-						<h5><%= comment.author.email.capitalize %></h5>
-					</span>
-				</div>
-			<div class="col-md-2 col-md-offset-2">
-				<h4><small>Comment :</small></h4>
-			</div>	
-			<div class="col-md-5">	
-				<p class="bg-success" style="padding:20px">
-					<%= comment.content %>
-				</p>
-			</div>
-			<div class="clearfix"></div>
-			<hr>
-			<% end %>
-	</div>
-	<div class="col-md-10">
-		
-	</div>
-</div>
+
+				<h2><a href="#">"<%= post.excerpt %>"</a></h2></div>
+
+        </div> <!-- row -->
+      </div><!-- jumbotron/post excerpt -->
+
+      <hr>
+
+      <div class="row details">
+        <div class="col-md-2"></div>  
+        <div class="col-md-10 details-text">
+          <h3><button type="button" class="btn btn-default"><a href="#"><%= link_to post.accuser, post_path(post.id) %></a></button> invoked Godwin against <button type="button" class="btn btn-default"><a href="#"><%= link_to post.target, post_path(post.id) %></a></button> on 27 March 2014.</h3>
+        </div>   
+      </div><!-- row details -->
+      <div class="row context top-margin">
+        <div class="col-md-2"></div>  
+        <div class="col-md-8 context-text">
+          <h4>Context:<small> Lorem ipsum dolor sit amizzle, yo mamma adipiscing phat. Shizzle my nizzle crocodizzle doggy fo shizzle, fo shizzle my nizzle volutpat, shut the shizzle up go to hizzle, its fo rizzle vizzle, arcu. Phat fizzle fo shizzle.</small></h4> <!-- !!  need post.context !! -->
+        </div>   
+        <div class="col-md-2"></div> 
+      </div>
+
+      <hr>
+
+      <div class="row author">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <h4> Submitted by:</h4> 
+          <span class="glyphicon glyphicon-star"></span> <%= link_to @user.name.capitalize, user_path(@user.id) %></a>
+          </button> on <a href="#"><%= post.date %></a>
+          <br/>
+          <a href="http://www.rushlimbaugh.com/daily/2009/08/06/whose_swastikas_speaker_pelosi">Source link</a> <!-- !!  need post.source !! -->
+        </div>
+        <div class="col-md-9"></div>
+      </div><!-- row author -->
+
+    
+
+
+  <hr>
+
+
+  <div class="row comment-title">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5">
+    	<h3>Comments:</h3>
+    </div>
+
+    <div class="col-md-6"></div>
+  	</div>
+
+	<% post.comments.each do |comment| %>
+    <div class="row">
+
+      <div class="col-md-2"></div>
+ 
+      <div class="col-md-8 comment">  
+        <h4 class="comment-author"><%= link_to comment.author.name.capitalize, user_path(comment.author.id) %></h4><br/> <!-- comment author -->
+
+        <p class="bg-success comment-text">
+          <%= comment.content %>
+        </p>
+      </div><!-- comment text-->
+
+      <div class="col-md-2"></div>
+      <div class="clearfix"></div>
+    </div>
+
+      <hr>
+
+      <% end %>
+
+
+	
+
+
