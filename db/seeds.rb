@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
+require 'csv'
+csv_text = File.read('db/nazi_references.csv')
+csv = CSV.parse(csv_text, :headers => true)
 
 User.delete_all
 Post.delete_all
