@@ -8,9 +8,10 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.create(url: params[:post][:url],category: params[:post][:category],accused: params[:post][:accused],accuser: params[:post][:accuser], quote: params[:post][:quote], excerpt: params[:post][:excerpt], user_id: current_user.id )
-  	Tag.create(title: params[:post][:category])
-  	Tag.create(title: params[:post][:accuser])
-  	Tag.create(title: params[:post][:accused])
+
+  	Tag.first_or_create(title: params[:post][:category]).valid?
+  	Tag.first_or_create(title: params[:post][:accuser]).valid?
+  	Tag.first_or_create(title: params[:post][:accused]).valid?
   	redirect_to post_path(@post.id)
   end
   def show
