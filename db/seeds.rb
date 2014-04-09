@@ -37,7 +37,7 @@ bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confi
 
 # file=File.open("input_file", "r:ISO-8859-1")
 
-CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
+CSV.foreach('db/nazi_references.csv', :headers => true) do |row|
 	post = Post.create(url: row['Source'], accused: row['Accused'], accuser: row['Accuser'], excerpt: row['Notes'], quote: row['Quote'], title: Faker::Name.name, date: row['Date'], category: legendArray.sample)
 
 	post.tags << Tag.find_or_create_by(title: post.category);
