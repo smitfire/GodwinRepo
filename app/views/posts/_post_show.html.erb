@@ -3,34 +3,21 @@
 <% end %>
 
 
-      <div class="jumbotron">
-      <div class="row">
-        		
-		<% if post.category == "World_Leader" %>
-			<div class="col-md-12 btn-sm btn-primary excerpt"> 
-		<% elsif post.category == "Government" %>
-			<div class="col-md-12 btn-sm btn-warning excerpt"> 
-		<% elsif post.category == "Law" %>
-			<div class="col-md-12 btn-sm btn-success excerpt">
-		<% elsif post.category == "Politician" %>
-			<div class="col-md-12 btn-sm btn-danger excerpt">
-		<% elsif post.category == "Celebrity" %>
-			<div class="col-md-12 bitn-sm btn-info excerpt">
-		<% end %>
+ 
+      <div class="row quote">
+        <div class="col-md-2"></div>               		
+        <div class="col-md-8 btn-sm excerpt">
+  				<h3></span><%= post.quote %></h3>
+  			</div>
+        <div class="col-md-2"></div>   
+      </div> <!-- row -->
 
-				<h3><%= post.quote %></h3>
-			</div>
-
-        </div> <!-- row -->
-      </div><!-- jumbotron/post excerpt -->
-
-      <hr>
-
-      <div class="row details">
+      <div class="row details top-margin">
         <div class="col-md-2"></div>  
-        <div class="col-md-10 details-text">
-          <h3><button type="button" class="btn btn-default"><a href="#"><%= link_to post.accuser, post_path(post.id) %></a></button> invoked Godwin against <button type="button" class="btn btn-default"><a href="#"><%= link_to post.accused, post_path(post.id) %></a></button> on 27 March 2014.</h3>
+        <div class="col-md-8 details-text">
+          <h4><a href="#"><%= link_to post.accuser, post_path(post.id) %></a> invoked Godwin's Law against <a href="#"><%= link_to post.accused, post_path(post.id) %></a> on 27 March 2014.</h4>
         </div>   
+        <div class="col-md-2"></div>  
       </div><!-- row details -->
 
       <div class="row context top-margin">
@@ -55,7 +42,7 @@
         <div class="col-md-6"></div>
       </div><!-- row author -->
       
-  <hr>
+      <hr>
 
   <div class="row comment-title">
     <div class="col-md-1"></div>
@@ -66,7 +53,7 @@
   </div>
 
 	<% post.comments.each do |comment| %>
-    <div class="row">
+    <div class="row comments">
       <div class="col-md-2"></div>
       <div class="col-md-8 comment">  
         <h4 class="comment-author"><%= link_to comment.author.name.capitalize, user_path(comment.author.id) %></h4><br/> <!-- comment author -->
