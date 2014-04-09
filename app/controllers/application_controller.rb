@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def randoms
+    	rand_string =  ('a'..'z').to_a + (0..9).to_a*3
+    	rand_string.shuffle[0...12].join
+  	end
+  	helper_method :randoms
 end

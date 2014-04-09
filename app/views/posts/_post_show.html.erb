@@ -6,19 +6,20 @@
       <div class="jumbotron">
       <div class="row">
         		
-        		<% if post.category == "World_Leader" %>
-					<div class="col-md-12 btn-sm btn-primary excerpt"> 
-				<% elsif post.category == "Government" %>
-					<div class="col-md-12 btn-sm btn-warning excerpt"> 
-				<% elsif post.category == "Law" %>
-					<div class="col-md-12 btn-sm btn-success excerpt">
-				<% elsif post.category == "Politician" %>
-					<div class="col-md-12 btn-sm btn-danger excerpt">
-				<% elsif post.category == "Celebrity" %>
-					<div class="col-md-12 bitn-sm btn-info excerpt">
-				<% end %>
+		<% if post.category == "World_Leader" %>
+			<div class="col-md-12 btn-sm btn-primary excerpt"> 
+		<% elsif post.category == "Government" %>
+			<div class="col-md-12 btn-sm btn-warning excerpt"> 
+		<% elsif post.category == "Law" %>
+			<div class="col-md-12 btn-sm btn-success excerpt">
+		<% elsif post.category == "Politician" %>
+			<div class="col-md-12 btn-sm btn-danger excerpt">
+		<% elsif post.category == "Celebrity" %>
+			<div class="col-md-12 bitn-sm btn-info excerpt">
+		<% end %>
 
-				<h2><a href="#">"<%= post.excerpt %>"</a></h2></div>
+				<h3><%= post.quote %></h3>
+			</div>
 
         </div> <!-- row -->
       </div><!-- jumbotron/post excerpt -->
@@ -28,7 +29,7 @@
       <div class="row details">
         <div class="col-md-2"></div>  
         <div class="col-md-10 details-text">
-          <h3><button type="button" class="btn btn-default"><a href="#"><%= link_to post.accuser, post_path(post.id) %></a></button> invoked Godwin against <button type="button" class="btn btn-default"><a href="#"><%= link_to post.target, post_path(post.id) %></a></button> on 27 March 2014.</h3>
+          <h3><button type="button" class="btn btn-default"><a href="#"><%= link_to post.accuser, post_path(post.id) %></a></button> invoked Godwin against <button type="button" class="btn btn-default"><a href="#"><%= link_to post.accused, post_path(post.id) %></a></button> on 27 March 2014.</h3>
         </div>   
       </div><!-- row details -->
       <div class="row context top-margin">

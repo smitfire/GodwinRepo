@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.text   :url
+      t.text     :url
       t.string   :category
       t.string   :accused
       t.string   :accuser

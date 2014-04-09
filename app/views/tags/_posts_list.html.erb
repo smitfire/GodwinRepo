@@ -5,40 +5,36 @@
 	<% post_slice.each do |post| %>
 	<div class="col-md-6">
 	<div class="recent-entry">
-	<% if post.category == "World_Leader" %>
-			<a href="/posts/<%=post.id%>" class="btn btn-sm btn-primary"> 
-	<% elsif post.category == "Government" %>
-			<a href="/posts/<%= post.id%>" class="btn btn-sm btn-warning"> 
-	<% elsif post.category == "Law" %>
-				<a href="/posts/<%= post.id%>" class="btn btn-sm btn-success">
-	<% elsif post.category == "Politician" %>
-				<a href="/posts/<%= post.id%>" class="btn btn-sm btn-danger">
-	<% elsif post.category == "Celebrity" %>
-				<a href="/posts/<%= post.id%>" class="btn btn-sm btn-info">
-	<% end %>
-				<%= post.date %>					
-			</a>
-			
+		<% if post.category == "World_Leader" %>
+			<%= link_to post.date, tag_path(Tag.find_by_title(post.category).id), class: "btn btn-sm btn-primary" %> 
+		<% elsif post.category == "Government" %>
+			<%= link_to post.date, tag_path(Tag.find_by_title(post.category).id), class: "btn btn-sm btn-warning" %>
+		<% elsif post.category == "Law" %>
+			<%= link_to post.date, tag_path(Tag.find_by_title(post.category).id), class: "btn btn-sm btn-success" %>
+		<% elsif post.category == "Politician" %>
+			<%= link_to post.date, tag_path(Tag.find_by_title(post.category).id), class: "btn btn-sm btn-danger" %>
+		<% elsif post.category == "Celebrity" %>
+			<%= link_to post.date, tag_path(Tag.find_by_title(post.category).id), class: "btn btn-sm btn-info" %>
+		<% end %>
 			<small class="pull-right"> <%= post.category %> </small>							
 			<h3>
-				<%= link_to post.target, post_path(post.id) %>
+				<%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser).id) %>
 					<small> was accused of...</small> 
 				</h3>
 				<br>
 				<p class="bg-info" style="padding:40px;">
-					<%= post.excerpt %>
+					<%= post.quote %>
 					</p>
 				<h3 class="">
 				<small>
 					By: 
-					<a href="".>
-						<%= post.accuser %>	
+					<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>	
 					</a>
 				</small>
 			</h3>
 			<div class="clearfix"></div>
 			<hr>
-			<h5><a href="<%=post.url%>"><%= post.url %> </a></h5>
+			<h5><a href="<%=post.url%>">www.<%= randoms%>.url </a></h5>
 			<hr>
 			<% post.tags.each do |tag|%>
 					<a href="/tags/<%= tag.id %>" class="btn btn-sm btn-default">
