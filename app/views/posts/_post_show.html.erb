@@ -32,6 +32,7 @@
           <h3><button type="button" class="btn btn-default"><a href="#"><%= link_to post.accuser, post_path(post.id) %></a></button> invoked Godwin against <button type="button" class="btn btn-default"><a href="#"><%= link_to post.accused, post_path(post.id) %></a></button> on 27 March 2014.</h3>
         </div>   
       </div><!-- row details -->
+
       <div class="row context top-margin">
         <div class="col-md-2"></div>  
         <div class="col-md-8 context-text">
@@ -51,44 +52,31 @@
           <br/>
           <a href="http://www.rushlimbaugh.com/daily/2009/08/06/whose_swastikas_speaker_pelosi">Source link</a> <!-- !!  need post.source !! -->
         </div>
-        <div class="col-md-9"></div>
+        <div class="col-md-6"></div>
       </div><!-- row author -->
-
-    
-
-
+      
   <hr>
 
-
   <div class="row comment-title">
-
     <div class="col-md-1"></div>
-
     <div class="col-md-5">
     	<h3>Comments:</h3>
     </div>
-
     <div class="col-md-6"></div>
-  	</div>
+  </div>
 
 	<% post.comments.each do |comment| %>
     <div class="row">
-
       <div class="col-md-2"></div>
- 
       <div class="col-md-8 comment">  
         <h4 class="comment-author"><%= link_to comment.author.name.capitalize, user_path(comment.author.id) %></h4><br/> <!-- comment author -->
-
         <p class="bg-success comment-text">
           <%= comment.content %>
         </p>
-      </div><!-- comment text-->
-
+      </div><!-- comment-text-->
       <div class="col-md-2"></div>
       <div class="clearfix"></div>
     </div>
-
-      <hr>
 
       <% end %>
 
