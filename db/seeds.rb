@@ -21,12 +21,28 @@ nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', password_confi
 rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirmation: 'r', pic: "rob.jpeg");
 bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confirmation: 'b', pic: "b.jpg");
 
-15.times do 
-	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
+# 15.times do 
+# 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), accused: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 	
+# 	post.tags << Tag.find_or_create_by(title: post.category);
+# 	post.tags << Tag.find_or_create_by(title: post.accuser);
+# 	post.tags << Tag.find_or_create_by(title: post.accused);
+
+# 	5.times do
+# 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: nick.id)
+# 	end
+	
+# 	rob.posts << post 
+# end
+
+# file=File.open("input_file", "r:ISO-8859-1")
+
+CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
+	post = Post.create(url: row['Source'], accused: row['Accused'], accuser: row['Accuser'], excerpt: row['Notes'], quote: row['Quote'], title: Faker::Name.name, date: row['Date'], category: legendArray.sample)
+
 	post.tags << Tag.find_or_create_by(title: post.category);
 	post.tags << Tag.find_or_create_by(title: post.accuser);
-	post.tags << Tag.find_or_create_by(title: post.target);
+	post.tags << Tag.find_or_create_by(title: post.accused);
 
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: nick.id)
@@ -36,11 +52,11 @@ bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confi
 end
 
 15.times do 
-	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
+	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), accused: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 
 	post.tags << Tag.find_or_create_by(title: post.category);
 	post.tags << Tag.find_or_create_by(title: post.accuser);
-	post.tags << Tag.find_or_create_by(title: post.target);
+	post.tags << Tag.find_or_create_by(title: post.accused);
 
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(14), author_id: rob.id)
@@ -49,12 +65,12 @@ end
 end
 
 15.times do 
-	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), target: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
+	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), accused: Faker::Name.name, accuser: Faker::Name.name, category: legendArray.sample);
 
 
 	post.tags << Tag.find_or_create_by(title: post.category);
 	post.tags << Tag.find_or_create_by(title: post.accuser);
-	post.tags << Tag.find_or_create_by(title: post.target);
+	post.tags << Tag.find_or_create_by(title: post.accused);
 
 	5.times do
 		post.comments << Comment.create(content: Faker::Lorem.sentence(1), author_id: bane.id)

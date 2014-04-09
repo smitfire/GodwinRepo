@@ -1,10 +1,11 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.string   :url
+      t.text   :url
       t.string   :category
-      t.string   :target
+      t.string   :accused
       t.string   :accuser
+      t.text     :quote
       t.text     :excerpt
       t.string   :title
       t.integer  :user_id

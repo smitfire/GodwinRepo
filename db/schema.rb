@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(version: 20140403013704) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "url"
+    t.text     "url"
     t.string   "category"
-    t.string   "target"
+    t.string   "accused"
     t.string   "accuser"
+    t.text     "quote"
     t.text     "excerpt"
     t.string   "title"
     t.integer  "user_id"
