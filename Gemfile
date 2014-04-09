@@ -49,4 +49,4 @@ ruby "2.0.0"
 # Use debugger
   gem 'debugger', group: [:development, :test]
 
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
