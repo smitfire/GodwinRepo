@@ -1,0 +1,80 @@
+<% if @post %>
+	<% post = @post %>
+<% end %>
+
+<div class="row">
+	<div class="col-md-4">
+		<img src="/<%=@user.pic%>" alt="" width="140px">
+	</div>
+	<div class="col-md-8">
+		<h3><small>User :</small><span class="pull-right"><%= link_to @user.name.capitalize, user_path(@user.id) %></span></h3>
+		<hr>
+		<h3><small>Email :</small> <span class="pull-right"> <%= @user.email.capitalize %></span></h3>
+		<hr>			
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+	<div class="col-md-12" >
+		<h3><small>Title : </small><span class="pull-right"><a href=""><%= post.title %></a></span></h3>
+		<hr>
+		<h3>
+			<small>
+				Date :
+			</small>
+			<span class="pull-right">
+				<% if post.category == "World_Leader" %>
+					<a href="<%=post.category%>" class="btn btn-sm btn-primary"> 
+				<% elsif post.category == "Government" %>
+					<a href="<%= post.category%>" class="btn btn-sm btn-warning"> 
+				<% elsif post.category == "Law" %>
+					<a href="<%= post.category%>" class="btn btn-sm btn-success">
+				<% elsif post.category == "Politician" %>
+					<a href="<%= post.category%>" class="btn btn-sm btn-danger">
+				<% elsif post.category == "Celebrity" %>
+					<a href="<%= post.category%>" class="btn btn-sm btn-info">
+				<% end %>
+		
+				<%= post.date %>					
+				</a>
+			</span>
+		</h3>
+		<hr>
+		<h3><small>Accused : <span class="pull-right"><%= link_to post.accused, post_path(post.id) %></span></small></h3>
+		<hr>
+		<h3><small>Accuser : <span class="pull-right"><%= link_to post.accuser, post_path(post.id) %></span></small></h3>
+		
+		<hr>
+		<p class="bg-info" style="padding:40px 50px; line-height:24px;">
+			<%= post.excerpt %>
+		</p>
+		<hr>
+	</div>
+	<div class="row">
+		<h4>Comments :</h4>
+		<br>
+		
+			<% post.comments.each do |comment| %>
+			<div class="col-md-3">
+				<img class="pull-right" src="/<%=comment.author.pic%>" alt="" width="80px">
+					<span class="pull-left">
+						<h5><%= link_to comment.author.name.capitalize, user_path(comment.author.id) %></h5>
+						<hr>
+						<h5><%= comment.author.email.capitalize %></h5>
+					</span>
+				</div>
+			<div class="col-md-2 col-md-offset-2">
+				<h4><small>Comment :</small></h4>
+			</div>	
+			<div class="col-md-5">	
+				<p class="bg-success" style="padding:20px">
+					<%= comment.content %>
+				</p>
+			</div>
+			<div class="clearfix"></div>
+			<hr>
+			<% end %>
+	</div>
+	<div class="col-md-10">
+		
+	</div>
+</div>
