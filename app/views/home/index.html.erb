@@ -33,8 +33,14 @@
 					<small class="pull-right"> <%= post.category %> </small>							
 					<h3>
 						<%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser).id) %>
-							<small> was accused of...</small> 
+							<small> invoked godwin against...</small> 
 						</h3>
+						<h3 class="">
+						<small>
+							<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
+						
+						</small>
+					</h3>
 						<br>
 						<p>
 							<%= truncate(post.quote, length: 93) %> <small><a href="posts/<%= post.id %>">view full</a></small>
@@ -42,7 +48,7 @@
 						<h3 class="">
 						<small>
 							By: 
-							<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
+							<%= link_to post.user.name.capitalize, user_path(post.user.id) %>
 						
 							</a>
 						</small>
