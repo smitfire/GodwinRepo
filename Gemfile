@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "high_voltage", "~> 2.1.0"
 gem 'd3js-rails'
+
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'faker'

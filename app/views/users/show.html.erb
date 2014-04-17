@@ -4,24 +4,39 @@
 	<% end %>
 		
 </div><!-- row -->
+
 <hr>
 <div class="row">
 	<h2>User Profile</h2>
-	<div class="col-md-3"></div>
-	<div class="col-md-2">
-		<img src="/<%=@user.pic%>" alt="" class="user-avatar img-circle">
-	</div>
-	<div class="col-md-7">
+	
+	<div class="col-md-3">
 		<ul class="user-stats">
 			<li><small>User: </small><span class="glyphicon glyphicon-star"></span> <!-- people will go nuts for special flair --><%= link_to @user.name.capitalize, user_path(@user.id) %></h3></li>
 			<!-- we should probably either take this our after dev or provide an show/hide email toggle for users -->
 			<li><small>Email address: </small><%= @user.email %></li>
 			<li><small>Twitter: </small> <a href="<%=@user.twitter%>">@RobScharf</a> <!-- @user.twitter ? --></li>
-			<hr>
 			<li><small>User since: </small><%=@user.created_at.strftime("%B %d, %Y")%><!-- user.join_date ? --></li>
+		</ul>
+	</div>	
+	<div class="col-md-3">
+		<ul class="user-stats">
 			<li><small>Posts: </small><%=@user.posts.count%><!-- user.post_count ? --> </li>
+			<li><small>Posts Liked By Others:</small> <%=@user.post_likes_received.count%></li>
 			<li><small>Comments: </small><%=@user.comments.count%><!-- user.comment_count ? --></li>
+			<li><small>Comments Received: </small><%=@user.comments_received.count%><!-- user.comment_count ? --></li>
+		</ul>
+	</div>	
+	<div class="col-md-3">
+		<ul class="user-stats">
+			<li><small>User Likes:</small> <%=@user.likes.count%></li>
+			<li><small>Comments Liked By Others:</small> <%=@user.comment_likes_received.count%></li>
+			<li><small>Total Liked By Others:</small> <%=@user.total_likes_received%></li>
 		</ul>			
+	</div>
+	
+	<div class="clearfix"></div>
+	<div class="col-md-12">
+		<%= render "users/chart" %>
 	</div>
 	<div class="clearfix"></div>
 	<hr>

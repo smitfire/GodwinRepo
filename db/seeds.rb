@@ -45,8 +45,8 @@ CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
 	post.tags << Tag.find_or_create_by(title: post.accuser.title);
 	post.tags << Tag.find_or_create_by(title: post.accused.title);
 	# post.tags << Tag.find_or_create_by(title: post.date);
-	rand(1..8).times do
-		post.likes << Like.create(user: bane)
+	rand(1..3).times do
+		post.likes << Like.create(user: User.all.sample)
 	end
 	
 	5.times do
