@@ -2,20 +2,29 @@
 	<% if current_user && current_user.id  == @user.id %>
 		<%= render "posts/new" %>
 	<% end %>
-	<div class="">
-	<div class="col-md-4">
-		<img src="/<%=@user.pic%>" alt="" width="140px">
+		
+</div><!-- row -->
+<hr>
+<div class="row">
+	<h2>User Profile</h2>
+	<div class="col-md-3"></div>
+	<div class="col-md-2">
+		<img src="/<%=@user.pic%>" alt="" class="user-avatar img-circle" width="150px">
 	</div>
-	<div class="col-md-8">
-		<h3><small>User :</small><span class="pull-right"><%= link_to @user.name.capitalize, user_path(@user.id) %></span></h3>
-		<hr>
-		<h3><small>Email :</small> <span class="pull-right"> <%= @user.email.capitalize %></span></h3>
-		<hr>			
-	</div>
-	
+	<div class="col-md-7">
+		<ul class="user-stats">
+			<li><small>User: </small><span class="glyphicon glyphicon-star"></span> <!-- people will go nuts for special flair --><%= link_to @user.name.capitalize, user_path(@user.id) %></h3></li>
+			<!-- we should probably either take this our after dev or provide an show/hide email toggle for users -->
+			<li><small>Email address: </small><%= @user.email %></li>
+			<li><small>Twitter: </small> <a href="<%=@user.twitter%>">@RobScharf</a> <!-- @user.twitter ? --></li>
+			<hr>
+			<li><small>User since: </small><%=@user.created_at%><!-- user.join_date ? --></li>
+			<li><small>Posts: </small><%=@user.posts.count%><!-- user.post_count ? --> </li>
+			<li><small>Comments: </small><%=@user.comments.count%><!-- user.comment_count ? --></li>
+		</ul>			
 	</div>
 	<div class="clearfix"></div>
-	<h2 class="">Posts :</h2>
+	<hr>
+	<h2 class="">Posts</h2>
 	<%= render "tags/posts_list" %>
-		
 </div><!-- row -->
