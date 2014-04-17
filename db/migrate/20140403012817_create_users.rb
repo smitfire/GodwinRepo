@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :email
       t.string :password_digest, null: false
       t.string :password_confirmation
@@ -9,5 +9,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :users, :id
   end
 end

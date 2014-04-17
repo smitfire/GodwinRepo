@@ -1,5 +1,7 @@
 <div class="row">
-	<%= render "posts/new" %>
+	<% if current_user && current_user.id  == @user.id %>
+		<%= render "posts/new" %>
+	<% end %>
 	<div class="">
 	<div class="col-md-4">
 		<img src="/<%=@user.pic%>" alt="" width="140px">

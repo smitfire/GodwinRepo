@@ -27,55 +27,53 @@
 		<% post_slice.each do |post| %>
 			<div class="col-md-4">
 			<div class="recent-entry">
-			<% if post.category == "World_Leader" %>
-					<a href="tags/<%=post.tags.first.id%>" class="btn btn-sm btn-primary"> 
-			<% elsif post.category == "Government" %>
-					<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-warning"> 
-			<% elsif post.category == "Law" %>
-						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-success">
-			<% elsif post.category == "Politician" %>
-						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-danger">
-			<% elsif post.category == "Celebrity" %>
-						<a href="tags/<%= post.tags.first.id%>" class="btn btn-sm btn-info">
+			<% if post.category.title == "World_Leader" %>
+			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-primary" %> 
+			<% elsif post.category.title == "Government" %>
+				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-warning" %>
+			<% elsif post.category.title == "Law" %>
+				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-success" %>
+			<% elsif post.category.title == "Politician" %>
+				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-danger" %>
+			<% elsif post.category.title == "Celebrity" %>
+				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-info" %>
 			<% end %>
-						<%= post.date %>					
-					</a>
-					
-					<small class="pull-right"> <%= post.category %> </small>							
+			<small class="pull-right"> <%= post.category.title %> <br><a href="<%=post.url%>" >source link</a> </small>
+			
 					<h3>
 						<%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser).id) %>
 							<small> invoked godwin against...</small> 
 						</h3>
 						<h3 class="">
-						<small>
-							<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
-						
-						</small>
-					</h3>
+							<small>
+								<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
+							</small>
+						</h3>
 						<br>
 						<p>
-							<%= truncate(post.quote, length: 93) %> <small><a href="posts/<%= post.id %>">view full</a></small>
-							</p>
+							<%= truncate(post.quote, length: 93) %> 
+							<small>
+								<%= link_to 'view full', post_path(post.id) %>		
+							</small>
+						</p>
 						<h3 class="">
-						<small>
-							By: 
-							<%= link_to post.user.name.capitalize, user_path(post.user.id) %>
-						
-							</a>
-						</small>
-					</h3>
+							<small>
+								By: 
+								<%= link_to post.user.name.capitalize, user_path(post.user.id) %>
+							</small>
+						</h3>
 					<hr>
 					<% post.tags.each do |tag|%>
-							<a href="/tags/<%= tag.id %>" class="btn btn-sm btn-default">
-								<%= tag.title %>
-							</a>
+							<%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-sm btn-default' %>
 					<%end%>
-					
+					<button class="pull-right btn btn-success btn-sm">
+						<%=post.likes.count%>
+					</button>
 					<hr>
 				</div><!-- recent entry -->
 				</div>
 			<% end %>
-			<div class="clearfix"></div>
+			<br><br>
 	<% end %>
 	<div class="clearfix"></div>
 </div><!-- row -->
