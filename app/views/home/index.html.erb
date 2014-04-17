@@ -6,62 +6,63 @@
 
 </div>
 
-<div class="row">
-<h3>Legend: </h3>
-<div class="clearfix"></div>
-<hr>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-primary">   </button> World Leader </div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-warning">   </button> Government or Administration</div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-danger">   </button> Politician </div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-success">   </button> Law or Philosophy</div>
-<div class="col-lg-2"><button type="button" class="btn btn-lg btn-info">   </button> Celebrity or Pundit</div>
+<div class="row home-row categories">
+		<h2 class="home-title">Categories</h2>
 
+		<div class="clearfix"></div>
+		<div class="col-md-1"></div>
+		<div class="col-lg-2"><button type="button" class="btn btn-lg btn-primary">   </button> World Leader or Politician </div>
+		<div class="col-lg-2"><button type="button" class="btn btn-lg btn-warning">   </button> National Government or Law</div>
+		<div class="col-lg-2"><button type="button" class="btn btn-lg btn-danger">   </button> Political Party, Organization, or Philosophy </div>
+		<div class="col-lg-2"><button type="button" class="btn btn-lg btn-success">   </button> Celebrity or Prominent Individual</div>
+		<div class="col-lg-2"><button type="button" class="btn btn-lg btn-info">   </button> Pundit, Journalist, or Media Outlet</div>
+		<div class="col-md-1"></div>	
+	</div>
 
-</div>
+<div class="row home-row recent-posts">
+		<h2 class="home-title">Most popular entries</h2>
 
-<div class="row">
-
-	<h2>Recent entries</h2>
-		<hr>
 		<% @posts.each_slice(3) do |post_slice| %>
 		<% post_slice.each do |post| %>
 			<div class="col-md-4">
 			<div class="recent-entry">
-			<% if post.category.title == "World_Leader" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-primary" %> 
-			<% elsif post.category.title == "Government" %>
-				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-warning" %>
-			<% elsif post.category.title == "Law" %>
-				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-success" %>
-			<% elsif post.category.title == "Politician" %>
-				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-danger" %>
-			<% elsif post.category.title == "Celebrity" %>
-				<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-info" %>
-			<% end %>
-			<small class="pull-right"> <%= post.category.title %> <br><a href="<%=post.url%>" >source link</a> </small>
+			<div class="accusation">
+				<h4>
+					<% if post.accuser.category.title == "World_Leader" %>
+					<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-primary" %> 
+					<% elsif post.accuser.category.title == "Government" %>
+						<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-warning" %>
+					<% elsif post.accuser.category.title == "Law" %>
+						<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-success" %>
+					<% elsif post.accuser.category.title == "Politician" %>
+						<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-danger" %>
+					<% elsif post.accuser.category.title == "Celebrity" %>
+						<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-info" %>
+					<% end %>
+					<small> invoked Godwin's Law against... </small>
+					<% if post.accused.category.title == "World_Leader" %>
+					<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-primary" %> 
+					<% elsif post.accused.category.title == "Government" %>
+						<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-warning" %>
+					<% elsif post.accused.category.title == "Law" %>
+						<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-success" %>
+					<% elsif post.accused.category.title == "Politician" %>
+						<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-danger" %>
+					<% elsif post.accused.category.title == "Celebrity" %>
+						<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-info" %>
+					<% end %>
+				</h4>
+				<div class="clearfix"></div>
+			</div>
 			
-					<h3>
-						<%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser).id) %>
-							<small> invoked godwin against...</small> 
-						</h3>
-						<h3 class="">
-							<small>
-								<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
-							</small>
-						</h3>
+				
+						<p class="post-excerpt"><%= truncate(post.quote, length: 93) %> </p>
 						<br>
-						<p>
-							<%= truncate(post.quote, length: 93) %> 
 							<small>
-								<%= link_to 'view full', post_path(post.id) %>		
+								<%= link_to '(view full entry)', post_path(post.id) %>		
 							</small>
-						</p>
-						<h3 class="">
-							<small>
-								By: 
-								<%= link_to post.user.name.capitalize, user_path(post.user.id) %>
-							</small>
-						</h3>
+						
+						<h4 class=""><small>By: <%= link_to post.user.name.capitalize, user_path(post.user.id) %></a></small></h4>
 					<hr>
 					<% post.tags.each do |tag|%>
 							<%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-sm btn-default' %>
@@ -77,6 +78,16 @@
 	<% end %>
 	<div class="clearfix"></div>
 </div><!-- row -->
+
+<div class="row home-row help">
+		<h2 class="home-title">Having trouble finding what you're looking for?</h2>
+		<div class="clearfix"></div>
+		
+		<div class="col-md-10 col-md-offset-1"> 
+			<p>You have a few options. The best way to find a list of entries relating to an individual or organization is to locate him, her, or it on the <a href="#">alphabetized master list</a> of people and organizations in our database! Alternatively, you could check out the <a href="#">most recent submissions</a> or try a keyword search in the area provided at the top-right of the page.</p>
+		</div>
+		
+</div>
 
 
  
