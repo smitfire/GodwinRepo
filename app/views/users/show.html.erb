@@ -9,7 +9,7 @@
 	<h2>User Profile</h2>
 	<div class="col-md-3"></div>
 	<div class="col-md-2">
-		<img src="/<%=@user.pic%>" alt="" class="user-avatar img-circle" width="150px">
+		<img src="/<%=@user.pic%>" alt="" class="user-avatar img-circle">
 	</div>
 	<div class="col-md-7">
 		<ul class="user-stats">
@@ -18,7 +18,7 @@
 			<li><small>Email address: </small><%= @user.email %></li>
 			<li><small>Twitter: </small> <a href="<%=@user.twitter%>">@RobScharf</a> <!-- @user.twitter ? --></li>
 			<hr>
-			<li><small>User since: </small><%=@user.created_at%><!-- user.join_date ? --></li>
+			<li><small>User since: </small><%=@user.created_at.strftime("%B %d, %Y")%><!-- user.join_date ? --></li>
 			<li><small>Posts: </small><%=@user.posts.count%><!-- user.post_count ? --> </li>
 			<li><small>Comments: </small><%=@user.comments.count%><!-- user.comment_count ? --></li>
 		</ul>			

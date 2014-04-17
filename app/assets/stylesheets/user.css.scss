@@ -18,3 +18,51 @@ form.form-inline input:-webkit-autofill{
 .no-m-p{
 	// padding:5px; margin:0;
 }
+ul.user-stats{
+	list-style:none;
+	padding-top:20px;
+}
+.user-avatar{
+	margin-top:30px;
+	width:150px;
+}
+
+header{
+	height: 200px;
+	padding:12px 0 10px;
+}
+.home-row{
+	margin:50px 0 0;
+}
+*{
+	// outline:red 2px solid;
+}
+h2.home-title{
+	margin-bottom:1.5em;
+}
+p.post-excerpt{
+	margin-bottom:0;
+	height:60px;
+}
+hr{
+	border-top: 1px solid #FFFFFF;
+}
+.top-margin{
+	margin-top:2em;
+}
+.excerpt{	
+	background-color: #EEEEEE;
+	padding: 5%;
+	min-height: 80px;
+}
+.except h3{
+	line-height: 1.2em;
+}
+.details{text-align: center;}
+.context-text{
+}
+
+/* Comments */
+.comment-text{
+	padding: 2%;
+}
