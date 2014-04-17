@@ -21,8 +21,8 @@ class PostsController < ApplicationController
 
   def show  
     @post = Post.find(params[:id]) 
-    @tag_accuser = Tag.find_by_title(@post.accuser)
-    @tag_accused = Tag.find_by_title(@post.accused)
+    # @tag_accuser = @post.accuser.title
+    # @tag_accused = @post.accused.title
     @user = @post.user
   end
 
