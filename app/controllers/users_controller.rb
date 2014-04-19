@@ -8,18 +8,30 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    session[:user_prof] = @user.id
-    
     @posts = @user.posts
-    
-  end
+    post_dates = []
+    @user.posts.each do |pd|
+      post_dates << {:date => pd.created_at.strftime("%Y-%m-%d"), label: pd.title, value: pd.likes.count + pd.comments.count*100}
+    end
 
-  def values_for_js
-    user = User.find(params[:user_id])
-    total = user.total_likes_received
-    post_total = user.posts.count
-    render json: { total: total, post_total: post_total }
-    
+    if request.xhr?
+      render json: { lineChart: post_dates, 
+          pieChart: [ 
+          {
+            color:"red",
+            description: "Total Likes Received",
+            title: @user.name.capitalize,
+            value: @user.total_likes_received, 
+          },
+          {
+            color: "blue",
+            description: "Total Posts",
+            title: @user.name.capitalize,
+            value: @posts.count 
+          }
+        ]
+      }
+    end
   end
 
 end

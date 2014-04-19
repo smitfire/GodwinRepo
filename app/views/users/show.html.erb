@@ -1,3 +1,5 @@
+<%= javascript_include_tag params[:controller] %>
+
 <div class="row">
 	<% if current_user && current_user.id  == @user.id %>
 		<%= render "posts/new" %>
@@ -5,7 +7,6 @@
 		
 </div><!-- row -->
 
-<hr>
 <div class="row">
 	<h2>User Profile</h2>
 	
@@ -35,7 +36,7 @@
 	</div>
 	
 	<div class="clearfix"></div>
-	<div class="col-md-12">
+	<div class="col-md-10 col-md-offset-1">
 		<%= render "users/chart" %>
 	</div>
 	<div class="clearfix"></div>

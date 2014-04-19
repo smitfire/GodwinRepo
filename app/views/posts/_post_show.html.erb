@@ -61,7 +61,7 @@
         <div class="col-md-5 col-md-offset-1">
           <h4> Submitted by:</h4> 
           <span class="glyphicon glyphicon-star"></span> <%= link_to @user.name.capitalize, user_path(@user.id) %></a>
-          </button> on <%= link_to post.date, post_date_path(post), class: "" %>
+          </button> on <%= link_to post.event_date, post_date_path(post), class: "" %>
           <br/>
           <a href="http://www.rushlimbaugh.com/daily/2009/08/06/whose_swastikas_speaker_pelosi">Source link</a> <!-- !!  need post.source !! -->
         </div>

@@ -19,7 +19,7 @@ GodwinRepo::Application.routes.draw do
   end
   resources :categories
   resources :users do
-    get 'values_for_js'
+    
   end
   resources :tags
   resources :likes

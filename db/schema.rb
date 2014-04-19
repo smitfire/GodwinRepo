@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20140417035858) do
     t.string   "title"
     t.text     "quote"
     t.text     "excerpt"
-    t.string   "date"
+    t.string   "event_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

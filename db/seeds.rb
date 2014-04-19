@@ -40,11 +40,10 @@ CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
 	
 	accuser = Accuser.find_or_create_by(title: row['Accuser'], category: catArr.sample)
 
-	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, excerpt: row['Notes'], quote: row['Quote'], title: Faker::Name.name, date: row['Date'], user: rob)
+	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, excerpt: row['Notes'], quote: row['Quote'], title: Faker::Name.name, event_date: row['Date'], user: rob)
 
 	post.tags << Tag.find_or_create_by(title: post.accuser.title);
 	post.tags << Tag.find_or_create_by(title: post.accused.title);
-	# post.tags << Tag.find_or_create_by(title: post.date);
 	rand(1..3).times do
 		post.likes << Like.create(user: User.all.sample)
 	end
@@ -54,29 +53,3 @@ CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
 	end
 	
 end
-
-# 15.times do 
-# 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), accused: Faker::Name.name, accuser: Faker::Name.name, user: bane);
-
-	
-# 	post.tags << Tag.find_or_create_by(title: post.accuser);
-# 	post.tags << Tag.find_or_create_by(title: post.accused);
-# 	post.likes << Like.create(user: nick)
-# 	5.times do
-# 		Comment.create(content: Faker::Lorem.sentence(14), user: rob, post: post)
-# 	end
-# end
-
-# 15.times do 
-# 	post = Post.create(url: Faker::Internet.url, excerpt: Faker::Lorem.paragraph(6), title: Faker::Name.name, date: rand(10.years).ago.to_formatted_s(:long), accused: Faker::Name.name, accuser: Faker::Name.name, user: nick);
-
-
-	
-# 	post.tags << Tag.find_or_create_by(title: post.accuser);
-# 	post.tags << Tag.find_or_create_by(title: post.accused);
-# 	post.likes << Like.create(user: rob)
-# 	5.times do
-# 		Comment.create(content: Faker::Lorem.sentence(1), user: bane, post: post)
-# 	end
-	
-# end  

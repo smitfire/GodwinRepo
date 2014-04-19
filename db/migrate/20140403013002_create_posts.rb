@@ -11,7 +11,7 @@ class CreatePosts < ActiveRecord::Migration
       # t.string   :accuser, null: :false
       t.text     :quote
       t.text     :excerpt
-      t.string   :date
+      t.string   :event_date
       
       t.timestamps
     end
