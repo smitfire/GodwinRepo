@@ -10,23 +10,26 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     post_dates = []
-    @user.posts.each do |pd|
-      post_dates << {:date => pd.created_at.strftime("%Y-%m-%d"), label: pd.title, value: pd.likes.count + pd.comments.count*100}
+    @posts.each do |pd|
+      if !(pd.event_date.nil? or pd.event_date == 0)  
+        post_dates << {:date => Date.parse(pd.event_date), label: pd.title, value: pd.likes.count + pd.comments.count*rand(150..220)}
+        # post_dates << {:date => pd.created_at, label: pd.title, value: pd.likes.count + pd.comments.count*rand(150..220)}
+      end
     end
-
+    post2_dates = post_dates.sort_by{ |k,v| k[:date] }
     if request.xhr?
-      render json: { lineChart: post_dates, 
+      render json: { lineChart: post2_dates, 
           pieChart: [ 
           {
             color:"red",
-            description: "Total Likes Received",
-            title: @user.name.capitalize,
+            description: "Likes",
+            title: @user.twitter.capitalize,
             value: @user.total_likes_received, 
           },
           {
             color: "blue",
-            description: "Total Posts",
-            title: @user.name.capitalize,
+            description: "Posts",
+            title: "User since: #{@user.created_at.strftime("%B %d, %Y")}",
             value: @posts.count 
           }
         ]

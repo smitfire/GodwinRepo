@@ -9,7 +9,7 @@ ul.user-stats{
 img.img-circle,
 img.user-avatar{
 	position:absolute;
-	left:370px; top:100px;
+	left:370px; top:80px;
 	display:inline;
 	width:240px;
 }
@@ -68,7 +68,7 @@ $f-baseSize               : 14px;
 $f-sizeHeadline           : 2 * $f-baseSize;
 $f-sizeSubHeadline        : $f-baseSize;
 
-$f-sizePieChartPercentage : 3 * $f-baseSize;
+$f-sizePieChartPercentage : 2 * $f-baseSize;
 $f-sizePieChartText       : 2 * $f-baseSize;
 
 $f-sizeBubbleLabel : 0.9 * $f-baseSize;
@@ -95,6 +95,7 @@ $d-chartHeight : 100px;
 #lineChart,
 #pieChart{
 	width:100%;
+  // outline: red 1px solid;
 }
 body {
   font-size: $f-baseSize;
@@ -115,7 +116,7 @@ body {
   min-height: $d-chartHeight;
   
 
-  padding: 1em;
+  padding: 0em;
 }
 
 .chart--headline, .chart--subHeadline {
@@ -152,8 +153,8 @@ body {
   background-color: $c-bg;
   width: 100%;
   left : 50%;
-  top : 10%;
-  margin: 2em auto; 
+  top : 0%;
+  margin: 1em auto; 
 }
 
 .charts--headline {
@@ -170,7 +171,7 @@ body {
 .lineChart--areaLine {
   fill   : none;
   stroke : $c-blue;
-  stroke-width: 3;
+  stroke-width: 2;
 }
 
 .lineChart--bubble--label {
@@ -192,7 +193,7 @@ body {
 .lineChart--circle {
   fill: $c-blue;
   stroke: #fff;
-  stroke-width: 3;
+  stroke-width: 2;
 }
 
 .lineChart--circle__highlighted {
@@ -246,6 +247,8 @@ body {
 
 .pieChart--center--text {
   font-size: $f-sizePieChartText;
+  // outline:red solid 1px;
+  height:100px;
 }
 
 .pieChart--center--outerCircle {
@@ -265,9 +268,12 @@ body {
 }
 
 .pieChart--detail--textContainer {
-  // background-color: transparent;
-  padding: 10px;
-  margin: 0;
+  background-color: transparent;
+  // background-color: rgba(54,54,54,0.7);
+  padding: 5px;
+  margin: 5px;
+  // height: 100px;
+  // outline:red solid 1px;
   
   // color: $c-baseColorBright;
   font-style: italic;
@@ -275,10 +281,12 @@ body {
 
 .pieChart--detail__left {
   text-align: left;
+  // outline:red solid 1px;
 }
 
 .pieChart--detail__right {
   text-align: right;
+  // outline:red solid 1px;
 }
 
 .pieChart__blue {

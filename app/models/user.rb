@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 
 	def total_likers
 
-
 	end
+
+	def rand_date(days)
+  	rand(days).days.ago(Date.today)
+	end
+
 end
