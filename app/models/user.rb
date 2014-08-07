@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 	end
 
 	def rand_date(days)
-  	rand(days).days.ago(Date.today)
+  		rand(days).days.ago(Date.today)
 	end
 
 end

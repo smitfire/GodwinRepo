@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
   	Like.create(like_params)
-  	# redirect_to root_url
+  	redirect_to root_url
   end
 
   def update

@@ -44,9 +44,9 @@ CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
 
 	post.tags << Tag.find_or_create_by(title: post.accuser.title);
 	post.tags << Tag.find_or_create_by(title: post.accused.title);
-	rand(1..3).times do
-		post.likes << Like.create(user: User.all.sample)
-	end
+	# rand(1..3).times do
+	# 	post.likes << Like.create(user: User.all.sample)
+	# end
 	
 	5.times do
 		Comment.create(content: Faker::Lorem.sentence(14), user: nick, post: post)
