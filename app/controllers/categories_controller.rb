@@ -4,7 +4,11 @@ class CategoriesController < ApplicationController
 
   def show
   	@category= Category.find(params[:id])
-  	@posts = @category.posts
+  	@posts_accused = @category.accused_posts
+  	@posts_accuser = @category.accuser_posts
+  	# @category.accusers.each do |cat|
+  	# 	@posts << cat.posts
+  	# end
   end
 
   def new

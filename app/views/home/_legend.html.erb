@@ -1,0 +1,21 @@
+<div class="row home-row categories">
+	<h2 class="home-title">Categories</h2>
+	<div class="clearfix"></div>
+	<div class="col-md-1"></div>
+	<% Category.all.each do |cat| %>
+		<div class="col-lg-2">
+			<%if cat.title == "World_Leader"%>
+				<%= link_to '', category_path(cat.id), class: "btn btn-lg btn-primary" %>
+			<%elsif cat.title == "Government"%>
+				<%= link_to '', category_path(cat.id), class: "btn btn-lg btn-warning" %>
+			<%elsif cat.title == "Law"%>
+				<%= link_to '', category_path(cat.id), class: "btn btn-lg btn-success" %>
+			<%elsif cat.title == "Politician"%>
+				<%= link_to '', category_path(cat.id), class: "btn btn-lg btn-danger" %>
+			<%elsif cat.title == "Celebrity"%>
+				<%= link_to '', category_path(cat.id), class: "btn btn-lg btn-info" %>
+			<%end%>
+			<%= link_to cat.title, category_path(cat.id) %>
+		</div>
+	<%end%>
+</div>

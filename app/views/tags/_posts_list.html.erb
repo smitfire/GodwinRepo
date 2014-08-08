@@ -1,60 +1,71 @@
-<hr>
-
-<% @posts.each_slice(2) do |post_slice| %>
+<% @posts.each_slice(3) do |post_slice| %>
+		<% post_slice.each do |post| %>
+			<div class="col-md-4">
+			 	<div class="recent-entry">
+					<div class="accusation">
+						<h4>
+							<% if post.accuser.category.title == "World_Leader" %>
+							<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-primary" %> 
+							<% elsif post.accuser.category.title == "Government" %>
+								<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-warning" %>
+							<% elsif post.accuser.category.title == "Law" %>
+								<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-success" %>
+							<% elsif post.accuser.category.title == "Politician" %>
+								<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-danger" %>
+							<% elsif post.accuser.category.title == "Celebrity" %>
+								<%= link_to post.accuser.title, category_path(post.accuser.category.id), class: "btn btn-sm btn-info" %>
+							<% end %>
+							<small> invoked Godwin's Law against... </small>
+							<% if post.accused.category.title == "World_Leader" %>
+							<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-primary" %> 
+							<% elsif post.accused.category.title == "Government" %>
+								<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-warning" %>
+							<% elsif post.accused.category.title == "Law" %>
+								<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-success" %>
+							<% elsif post.accused.category.title == "Politician" %>
+								<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-danger" %>
+							<% elsif post.accused.category.title == "Celebrity" %>
+								<%= link_to post.accused.title, category_path(post.accused.category.id), class: "btn btn-sm btn-info" %>
+							<% end %>
+						</h4>
+					</div><!-- accusation -->
 	
-	<% post_slice.each do |post| %>
-	<div class="col-md-6">
-	<div class="recent-entry">
-		<% if post.category.title == "World_Leader" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-primary" %> 
-		<% elsif post.category.title == "Government" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-warning" %>
-		<% elsif post.category.title == "Law" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-success" %>
-		<% elsif post.category.title == "Politician" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-danger" %>
-		<% elsif post.category.title == "Celebrity" %>
-			<%= link_to post.date, category_path(post.category.id), class: "btn btn-sm btn-info" %>
+						<p class="post-excerpt"><%= truncate(post.quote, length: 93) %> 
+							<small>
+								<%= link_to '(view full entry)', post_path(post.id) %>		
+							</small>
+						</p>
+						
+						<h4 class="">
+							<small>
+								By: <%= link_to post.user.name.capitalize, user_path(post.user.id) %>
+							</small>
+						</h4>
+					<hr>
+					<% post.tags.each do |tag|%>
+							<%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-sm btn-default' %>
+					<%end%>
+						
+					<button class="pull-right btn btn-default btn-sm">
+						<%=post.likes.count%>
+					</button>
+					<% if current_user %>
+					<span class="pull-right">
+						<%= form_for :like, class: 'form form-inline pull-right', url: likes_path do |f| %>
+							<%= f.hidden_field :user_id, value: current_user.id %>
+							<%= f.hidden_field :post_id, value: post.id %>
+							<%= f.submit "+", class: "btn btn-success btn-sm" %>	
+						<%end%>
+					</span>	
+					<%else%>
+						<button class="pull-right btn btn-success btn-sm plusit">
+							+
+						</button>
+					<%end%>
+					<hr>
+				</div><!-- recent entry -->
+			</div><!--col 4 -->
 		<% end %>
-			<small class="pull-right"> <%= post.category.title %> </small>							
-			<h3>
-			<%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser).id) %>
-				<small> invoked godwin against...</small> 
-			</h3>
-			<h3 class="">
-			<small>
-				<%= link_to post.accused, tag_path(Tag.find_by_title(post.accused).id) %>
-			
-			</small>
-		</h3>
-			<br>
-			<p>
-				<%= post.quote %> 
-				<small>
-					<%= link_to 'view full', post_path(post.id) %>		
-				</small>
-				</p>
-			<h3 class="">
-				<small>
-					By: 
-					<%= link_to post.user.name.capitalize, user_path(post.user.id) %>
-				</small>
-			</h3>
-			<h3 class="">
-				<small>
-					<a href="<%=post.url%>" >www.<%=randoms%>.com</a>
-				</small>
-			</h3>
-		<hr>
-			<% post.tags.each do |tag|%>
-					<%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-sm btn-default' %>
-			<%end%>
-			<button class="pull-right btn btn-success btn-sm">
-				<%=post.likes.count%>
-			</button>
-			<hr>
-			</div><!-- recent entry -->
-		</div>
-	<% end %>
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
+
 <% end %>

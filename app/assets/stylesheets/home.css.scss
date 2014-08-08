@@ -1,13 +1,30 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 header{
 	height: 200px;
 	padding:12px 0 10px;
 }
-.row{
+.home-row{
 	margin:50px 0 0;
 }
-*{
-	// outline:red 2px solid;
+
+h2.home-title{
+	margin-bottom:1.5em;
+}
+.signinform input,
+.signinform p{
+	display:inline-block;
+}
+ul.signuporin{
+
+}
+ul.signuporin li{
+	display:inline-block;
+	list-style: none;
+}
+form.form-inline input:-webkit-autofill{
+	background-color:rgba(255,255,255,1) !important;
 }

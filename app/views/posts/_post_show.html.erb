@@ -3,8 +3,26 @@
 <% end %>
 
 
- 
+
       <div class="row quote">
+        <div class="col-md-2 col-md-offset-9">
+          <button class="btn btn-default btn-sm pull-right">
+            <%=post.likes.count%>
+          </button>
+          <% if current_user %>
+            <span class="pull-right">
+              <%= form_for :like, class: 'form form-inline', url: likes_path do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :post_id, value: post.id %>
+                <%= f.submit "+", class: "btn btn-success btn-sm" %>  
+              <%end%>
+            </span>
+          <%else%>
+            <button class=" btn btn-success pull-right btn-sm plusit">
+              +
+            </button>
+          <%end%>
+        </div>
         <div class="col-md-8 col-md-offset-2 btn-sm excerpt">
           <h3><%= post.quote %></h3>
         </div>
@@ -13,7 +31,7 @@
       <div class="row details top-margin">
         
         <div class="col-md-8 col-md-offset-2 details-text">
-          <h4><%= link_to post.accuser, tag_path(Tag.find_by_title(post.accuser)) %> invoked Godwin's Law against <%= link_to post.accused, tag_path(Tag.find_by_title(post.accused)) %> on 27 March 2014.</h4>
+          <h4><%= link_to post.accuser.title, tag_path(Tag.find_by_title(post.accuser.title)) %> invoked Godwin's Law against <%= link_to post.accused.title, tag_path(Tag.find_by_title(post.accused.title)) %> on 27 March 2014.</h4>
         </div>   
         
       </div><!-- row details -->
@@ -27,13 +45,23 @@
       </div>
 
       <hr>
+      <div class="row">
+        <div class="col-lg-8 col-md-offset-1">
+          <h4>Liked By: 
+          <%post.likers.each do |liker| %>
+          <span class="glyphicon glyphicon-star"></span> 
+            <%= link_to liker.name.capitalize, user_path(liker.id), class: "" %>
+          <%end%>
+          </h4>  
+        </div>
+      </div>
 
       <div class="row author">
         
         <div class="col-md-5 col-md-offset-1">
           <h4> Submitted by:</h4> 
           <span class="glyphicon glyphicon-star"></span> <%= link_to @user.name.capitalize, user_path(@user.id) %></a>
-          </button> on <%= link_to post.date, post_date_path(post), class: "" %>
+          </button> on <%= link_to post.event_date, post_date_path(post), class: "" %>
           <br/>
           <a href="http://www.rushlimbaugh.com/daily/2009/08/06/whose_swastikas_speaker_pelosi">Source link</a> <!-- !!  need post.source !! -->
         </div>

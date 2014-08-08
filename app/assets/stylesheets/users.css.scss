@@ -1,0 +1,298 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.user-stats{
+	list-style:none;
+	padding-top:20px;
+}
+img.img-circle,
+img.user-avatar{
+	position:absolute;
+	left:370px; top:80px;
+	display:inline;
+	width:240px;
+}
+
+p.post-excerpt{
+	margin-bottom:0;
+	height:60px;
+}
+hr.light{
+	border-top: 1px solid #FFFFFF;
+}
+.top-margin{
+	margin-top:2em;
+}
+.excerpt{	
+	background-color: #EEEEEE;
+	padding: 5%;
+	min-height: 80px;
+}
+.except h3{
+	line-height: 1.2em;
+}
+.details{text-align: center;}
+.context-text{
+}
+/* Comments */
+.comment-text{
+	padding: 2%;
+}
+span.plus{
+	font-size:30px;
+}
+// color stuff
+$c-bg             : #fff;
+$c-baseColor      : rgba(215,57,45,1);
+$c-baseColorBright: rgba(102,102,102,1);
+
+$c-border           : rgba(215,57,45,1);
+$c-borderDark       : $c-baseColor;
+$c-borderBright     : adjust-lightness( $c-baseColor, 10 );
+$c-borderBrightPlus : adjust-lightness( $c-baseColor, 10 );
+$c-shadow           : $c-baseColor;
+$c-dashedLine       : adjust-lightness( $c-baseColor, 10 );
+
+$c-borderDevider : $c-borderBright;
+
+$c-red  : rgba(215,57,45,1);
+$c-blue : rgba(107,183,199,1);
+
+// font-stuff
+$f-family : sans-serif;
+
+// sizes
+$f-baseSize               : 14px;
+
+$f-sizeHeadline           : 2 * $f-baseSize;
+$f-sizeSubHeadline        : $f-baseSize;
+
+$f-sizePieChartPercentage : 2 * $f-baseSize;
+$f-sizePieChartText       : 2 * $f-baseSize;
+
+$f-sizeBubbleLabel : 0.9 * $f-baseSize;
+$f-sizeBubbleValue : 1.5 * $f-baseSize;
+
+// weights
+$f-weight            : 100;
+$f-weightHeadline    : $f-weight;
+$f-weightSubHeadline : 400;
+
+$f-weightPieChartPercentage : 100;
+
+// spacing
+$f-spacing : 1px;
+
+// dimensions
+$d-chartHeight : 100px;
+
+// set base styles
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+} 
+#lineChart,
+#pieChart{
+	width:100%;
+  // outline: red 1px solid;
+}
+body {
+  font-size: $f-baseSize;
+  font-family: $f-family;
+  font-weight: $f-weight;
+  
+  ul {
+    list-style: none;
+  }
+  
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.chart {
+  min-height: $d-chartHeight;
+  
+
+  padding: 0em;
+}
+
+.chart--headline, .chart--subHeadline {
+  text-align: center;
+}
+
+.chart--headline {
+  position: relative;
+  
+  font-weight: $f-weightHeadline;
+  font-size: $f-sizeHeadline;
+
+  &:before {
+    position: absolute;
+    content: '';
+    
+    bottom: 133%;
+    left: 50%;
+    
+    width: 25%;
+    margin: 0 0 0 -12.5%;
+    
+    // border-top: 1px dashed $c-dashedLine;
+  }
+}
+
+.chart--subHeadline {
+  font-weight: $f-weightSubHeadline;
+  font-size: $f-sizeSubHeadline;
+  letter-spacing: $f-spacing;
+}
+
+.charts--container {
+  background-color: $c-bg;
+  width: 100%;
+  left : 50%;
+  top : 0%;
+  margin: 1em auto; 
+}
+
+.charts--headline {
+  text-align: center;
+  color: #444;
+  background-color: #fff;
+  padding: 1em;
+}
+
+.lineChart--area {
+  fill: url(#lineChart--gradientBackgroundArea);
+}
+
+.lineChart--areaLine {
+  fill   : none;
+  stroke : $c-blue;
+  stroke-width: 2;
+}
+
+.lineChart--bubble--label {
+  fill: none;
+  stroke: $c-blue;
+  
+  font-size: $f-sizeBubbleLabel;
+  font-style: italic;
+  font-weight: $f-weight;
+}
+
+.lineChart--bubble--value {
+  fill: #fff;
+  stroke: #fff;
+  
+  font-size: $f-sizeBubbleValue;
+  font-weight: $f-weight;
+}
+.lineChart--circle {
+  fill: $c-blue;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.lineChart--circle__highlighted {
+  fill: #fff;
+  stroke: adjust-lightness( $c-blue, -15 );
+}
+
+.lineChart--gradientBackgroundArea--top {
+  stop-color   : $c-blue;
+  stop-opacity : 0.1;
+}
+
+.lineChart--gradientBackgroundArea--bottom {
+  stop-color   : $c-blue;
+  stop-opacity : 0.6;
+}
+
+.lineChart--svg {
+  // border: 1px solid $c-border;
+}
+
+// d3.js doesn't let me BEM it. :(
+.lineChart--xAxisTicks, .lineChart--xAxis, .lineChart--yAxisTicks {
+  .domain {
+    display: none;
+  }
+}
+
+.lineChart--xAxis {
+  .tick {
+    line {
+      display: none;
+    }
+  }
+}
+
+.lineChart--xAxisTicks, .lineChart--yAxisTicks {
+  .tick {
+    line {
+      fill: none;
+      stroke: $c-borderBrightPlus;
+      stroke-width: 1;
+      stroke-dasharray: 2,2;
+    }
+  }
+}
+
+.pieChart--center--innerCircle {
+  fill: rgba(215,57,45,1);
+}
+
+.pieChart--center--text {
+  font-size: $f-sizePieChartText;
+  // outline:red solid 1px;
+  height:100px;
+}
+
+.pieChart--center--outerCircle {
+  fill: rgba( 255, 255, 255, 0.75 );
+}
+
+.pieChart--detail--divider {
+  
+}
+
+.pieChart--detail--percentage {
+  font-size: $f-sizePieChartPercentage;
+  font-weight: $f-weightPieChartPercentage;
+  
+  fill: $c-baseColor;
+  // stroke-width: 1px;
+}
+
+.pieChart--detail--textContainer {
+  background-color: transparent;
+  // background-color: rgba(54,54,54,0.7);
+  padding: 5px;
+  margin: 5px;
+  // height: 100px;
+  // outline:red solid 1px;
+  
+  // color: $c-baseColorBright;
+  font-style: italic;
+}
+
+.pieChart--detail__left {
+  text-align: left;
+  // outline:red solid 1px;
+}
+
+.pieChart--detail__right {
+  text-align: right;
+  // outline:red solid 1px;
+}
+
+.pieChart__blue {
+  fill: $c-blue;
+}
+
+.pieChart__red {
+  fill: $c-red;
+}

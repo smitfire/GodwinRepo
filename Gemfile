@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "high_voltage", "~> 2.1.0"
 gem 'd3js-rails'
+
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'faker'
@@ -25,6 +26,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
