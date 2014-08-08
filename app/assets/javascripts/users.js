@@ -404,7 +404,7 @@
                     );
 
                     return function(t) {
-                        this.textContent = i(t) + "   Hey     " + data.description;
+                        this.textContent = i(t) + "      " + data.description;
                     };
                 });
 
