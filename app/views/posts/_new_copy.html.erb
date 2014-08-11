@@ -2,39 +2,29 @@
    <h3>Create Post</h3>
     <%= form_for :post, class: 'form-horizontal', url: posts_path do |f| %>
       
-      <%= f.fields_for :accuser do |accuser_form| %>
-        <div class="form-group ">
-          <%= accuser_form.label 'Accuser', class: 'col-sm-2 control-label'%>
-          <div class="col-sm-6 ">
-            <%= accuser_form.text_field :title, class: 'form-control', :placeholder => "The Accuser" %>
-          </div>
-          <%= accuser_form.fields_for :category do |category_form| %>
-            <%= category_form.label 'Accuser Category', class: 'col-sm-2 control-label'%>
-            <div class="col-sm-1">
-              <%= category_form.collection_select :category_id, Category.all, :id, :title %>
-            </div>
-          <% end %>
-        <% end %>
+      <div class="form-group">
+        <%= f.label 'accuser', class: 'col-sm-2 control-label'%>
+        <div class="col-sm-6">
+          <%= f.text_field :accuser, class: 'form-control', :placeholder => "Accuser" %>
         </div>
-        
-        <div class="clearfix"></div>
-        <hr>
-
-        <div class="form-group">
-        <%= f.fields_for :accused do |accused_form| %>
-          <%= accused_form.label 'Accused', class: 'col-sm-2 control-label'%>
-          <div class="col-sm-6">
-            <%= accused_form.text_field :title, class: 'form-control', :placeholder => "The Accused" %>
-            </div>
-            <%= accused_form.fields_for :category do |category_form| %>
-            <%= category_form.label 'Accused Category', class: 'col-sm-2 control-label'%>
-              <div class="col-sm-1">
-                <%= category_form.collection_select :category_id, Category.all, :id, :title %>
-              </div>
-            <% end %>
-        <% end %>
+        <%= f.label 'Accuser Category', class: 'col-sm-2 control-label'%>
+        <div class="col-sm-1">
+          <%= f.collection_select :accuser_category_id, Category.all, :id, :title %>
+        </div>
       </div>
-
+      <div class="clearfix"></div>
+      <hr>
+      <div class="form-group">
+        <%= f.label 'Accused', class: 'col-sm-2 control-label'%>
+        <div class="col-sm-6">
+          <%= f.text_field  :accused, class: 'form-control datepicker', placeholder: 'Accused' %>
+        </div>
+        <%= f.label 'Accused Category', class: 'col-sm-2 control-label'%>
+        <div class="col-sm-1">
+          <%= f.collection_select :accused_category_id, Category.all, :id, :title %>
+        </div>
+      </div>  
+      
       <div class="clearfix"></div>
       <hr>
 

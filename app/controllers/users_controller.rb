@@ -34,6 +34,8 @@ class UsersController < ApplicationController
           }
         ]
       }
+    else
+      render 'show'
     end
   end
 

@@ -8,7 +8,8 @@ var ready = function(){
   $('button#show-post-form').on('click', function(event) {
      console.log('show post form button');
      $('#post-form').show();
-  }) 
+  })
+  $( ".datepicker" ).datepicker();
 }
 function accuserJax() {
   $('#myForm').on('submit', function(event{
