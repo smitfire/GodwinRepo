@@ -40,6 +40,8 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     columnize (0.8.9)
+    d3-tip-rails (0.0.1)
+      railties (>= 3.1)
     d3js-rails (3.1.6)
       railties (>= 3.0, < 5.0)
     debugger (1.6.8)
@@ -142,6 +144,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass
+  d3-tip-rails
   d3js-rails
   debugger
   faker

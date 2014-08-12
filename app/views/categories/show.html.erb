@@ -1,6 +1,13 @@
+<%= javascript_include_tag 'categories.js' %>
 <div class="row">
 	<button type="button" class="btn-info btn btn-lg"> <%= @category.title %></button>
-	<hr>
+</div>
+<div class="row">
+	<div id="bar_chart_cat" class="row">
+	</div>
+</div>	
+<hr>
+<div class="row">
 	<div class="col-md-5">
 		<h2>Accused:</h2>
 		<%= render "categories/posts_list" %>
