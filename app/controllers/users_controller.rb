@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     post_dates = []
     @posts.each do |pd|
       if !(pd.event_date.nil? or pd.event_date == 0)  
-        post_dates << {:date => Date.parse(pd.event_date), label: pd.title, value: pd.likes.count + pd.comments.count*rand(150..220)}
+        # post_dates << {:date => Date.parse(pd.event_date), label: pd.title, value: pd.likes.count + pd.comments.count*rand(150..220)}
         # post_dates << {:date => pd.created_at, label: pd.title, value: pd.likes.count + pd.comments.count*rand(150..220)}
       end
     end

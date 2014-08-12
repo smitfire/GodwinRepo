@@ -4,20 +4,16 @@
 //= require posts
 
 var ready = function(){
-  $('#post-form').hide();
-  $('button#show-post-form').on('click', function(event) {
-     console.log('show post form button');
-     $('#post-form').show();
+  $('#post_form').hide();
+  $('#show_post_form').on('click', function(event) {
+    event.stopPropagation();
+     $('#post_form').show();
+  })
+  $('#unshow_post_form').on('click', function(event) {
+    event.preventDefault()
+     $('#post_form').hide();
   })
   $( ".datepicker" ).datepicker();
-}
-function accuserJax() {
-  $('#myForm').on('submit', function(event{
-      event.preventDefault();
-      $.post(url, {name: 'nick'}, function(res){
-        console.log(res)
-        })
-    }))
 }
 $(document).ready(ready);
 $(document).on("page:load", ready);
