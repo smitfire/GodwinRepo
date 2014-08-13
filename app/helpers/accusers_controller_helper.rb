@@ -1,0 +1,2 @@
+module AccusersControllerHelper
+end

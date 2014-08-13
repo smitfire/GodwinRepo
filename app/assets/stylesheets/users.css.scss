@@ -63,12 +63,12 @@ $c-blue : rgba(107,183,199,1);
 $f-family : sans-serif;
 
 // sizes
-$f-baseSize               : 14px;
+$f-baseSize               : 12px;
 
-$f-sizeHeadline           : 2 * $f-baseSize;
+$f-sizeHeadline           : 1.5 * $f-baseSize;
 $f-sizeSubHeadline        : $f-baseSize;
 
-$f-sizePieChartPercentage : 2 * $f-baseSize;
+$f-sizePieChartPercentage : 1.5 * $f-baseSize;
 $f-sizePieChartText       : 2 * $f-baseSize;
 
 $f-sizeBubbleLabel : 0.9 * $f-baseSize;
@@ -85,7 +85,7 @@ $f-weightPieChartPercentage : 100;
 $f-spacing : 1px;
 
 // dimensions
-$d-chartHeight : 100px;
+$d-chartHeight : 400px;
 
 // set base styles
 * {
@@ -152,8 +152,8 @@ body {
 .charts--container {
   background-color: $c-bg;
   width: 100%;
-  left : 50%;
-  top : 0%;
+  // left : 50%;
+  // top : 0%;
   margin: 1em auto; 
 }
 
@@ -272,8 +272,8 @@ body {
   // background-color: rgba(54,54,54,0.7);
   padding: 5px;
   margin: 5px;
-  // height: 100px;
-  // outline:red solid 1px;
+  height: 100px;
+  outline:red solid 1px;
   
   // color: $c-baseColorBright;
   font-style: italic;
@@ -281,12 +281,12 @@ body {
 
 .pieChart--detail__left {
   text-align: left;
-  // outline:red solid 1px;
+  outline:red solid 1px;
 }
 
 .pieChart--detail__right {
   text-align: right;
-  // outline:red solid 1px;
+  outline:red solid 1px;
 }
 
 .pieChart__blue {

@@ -7,13 +7,13 @@ class PostsController < ApplicationController
   end
   
   def new
-  	
+    
   end
 
   def create
-  	@post = Post.create(post_params)
-
-  	redirect_to post_path(@post.id)
+    @post = Post.create(post_params)
+    build_relationships(params, @post.id)
+    redirect_to post_path(@post.id)
   end
 
   def show  

@@ -1,3 +1,4 @@
+
 <% if @posts_accused %>
 	<% @posts = @posts_accused %>
 <% elsif @posts_accuser %> 
@@ -5,9 +6,7 @@
 <% else%>
 	<% @posts %>
 <%end%>
-
-<% @posts.each_slice(1) do |post_slice| %>
-	
+<% @posts.each_slice(1) do |post_slice| %>		
 	<% post_slice.each do |post| %>
 	<div class="col-md-12">
 	<div class="recent-entry">

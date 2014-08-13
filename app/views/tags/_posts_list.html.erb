@@ -29,7 +29,7 @@
 							<% end %>
 						</h4>
 					</div><!-- accusation -->
-	
+					
 						<p class="post-excerpt"><%= truncate(post.quote, length: 93) %> 
 							<small>
 								<%= link_to '(view full entry)', post_path(post.id) %>		
@@ -40,6 +40,9 @@
 							<small>
 								By: <%= link_to post.user.name.capitalize, user_path(post.user.id) %>
 							</small>
+							<small class="pull-right">
+								</button> Date: <%= link_to post.event_date, post_date_path(post), class: "" %>
+							</small> 
 						</h4>
 					<hr>
 					<% post.tags.each do |tag|%>
