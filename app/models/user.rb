@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
 		self.comment_likes_received.count +  self.post_likes_received.count		
 	end
 
+	def total_comments_received
+			
+	end
+
 	def total_likers
 
 	end

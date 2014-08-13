@@ -63,12 +63,12 @@ $c-blue : rgba(107,183,199,1);
 $f-family : sans-serif;
 
 // sizes
-$f-baseSize               : 14px;
+$f-baseSize               : 12px;
 
-$f-sizeHeadline           : 2 * $f-baseSize;
+$f-sizeHeadline           : 1.5 * $f-baseSize;
 $f-sizeSubHeadline        : $f-baseSize;
 
-$f-sizePieChartPercentage : 2 * $f-baseSize;
+$f-sizePieChartPercentage : 1.5 * $f-baseSize;
 $f-sizePieChartText       : 2 * $f-baseSize;
 
 $f-sizeBubbleLabel : 0.9 * $f-baseSize;

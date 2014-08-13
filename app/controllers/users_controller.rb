@@ -22,15 +22,15 @@ class UsersController < ApplicationController
           pieChart: [ 
           {
             color:"red",
-            description: "Likes",
+            description: "Likes Received",
             title: @user.twitter.capitalize,
             value: @user.total_likes_received, 
           },
           {
             color: "blue",
-            description: "Posts",
+            description: "Comments Received",
             title: "User since: #{@user.created_at.strftime("%B %d, %Y")}",
-            value: @posts.count 
+            value: @user.comments_received.length 
           }
         ]
       }
