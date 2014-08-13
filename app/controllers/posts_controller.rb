@@ -22,6 +22,15 @@ class PostsController < ApplicationController
     Post.destroy(params[:id])
     redirect_to user_path(current_user.id)  
   end
+
+  def edit
+    @post = Post.find(params[:id])    
+  end
+
+  def update
+    post_update(params)
+    redirect_to user_path(current_user.id)
+  end
   
   def date
     @posts = Post.find_all_by_event_date(Post.find(params[:post_id]).event_date)

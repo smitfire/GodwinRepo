@@ -27,4 +27,13 @@ class ApplicationController < ActionController::Base
     post.tags << Tag.find_or_create_by(title: post.accused.title)
   end
   helper_method :build_relationships
+
+  def post_update(params)
+    post = Post.find(params[:id])
+    post.update(post_params)
+    post.accuser.update(title: params[:post][:accuser][:title], category_id: params[:post][:accuser][:category])
+    post.accused.update(title: params[:post][:accused][:title], category_id: params[:post][:accused][:category])
+    post.tags[0].update( title:post.accuser.title)
+    post.tags[1].update( title: post.accused.title)
+  end
 end

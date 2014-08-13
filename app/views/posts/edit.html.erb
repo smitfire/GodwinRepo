@@ -1,0 +1,88 @@
+<%= javascript_include_tag 'posts.js' %>
+<h1>
+  whos your daddy
+</h1>
+
+    <%= form_for @post, class: 'form-horizontal center' do |f| %>
+      
+      <div class="form-group">
+        <%= f.fields_for @post.accuser do |accuser_f| %>
+          <%= accuser_f.label 'accuser', class: 'col-sm-2 control-label'%>
+          <div class="col-sm-6">
+            <%= accuser_f.text_field :title, required: true, class: 'form-control', :placeholder => "Accuser" %>
+          </div>
+          <%= accuser_f.label 'Accuser Category', class: 'col-sm-2 control-label'%>
+          <div class="col-sm-1">
+            <%= accuser_f.collection_select :category, Category.all, :id, :title, {:selected=> @post.accuser.category.title.to_s }  %>
+          </div>
+          
+
+        <% end %>
+      </div><!-- FORM GROUP FOR ACCUSER CLOSE -->
+
+      <div class="clearfix"></div>
+      
+      <div class="form-group">
+        <%= f.fields_for @post.accused do |accused_f| %>
+          <%= accused_f.label 'accused', class: 'col-sm-2 control-label'%>
+          <div class="col-sm-6">
+            <%= accused_f.text_field :title, required: true, class: 'form-control', :placeholder => "Accused" %>
+          </div>
+          <%= accused_f.label 'Accused Category', class: 'col-sm-2 control-label'%>
+          <div class="col-sm-1">
+            <%= accused_f.collection_select :category, Category.all, :id, :title,  {:selected=> @post.accused.category.title.to_s} %>
+          </div>
+        <% end %>
+      </div><!-- FORM GROUP FOR ACCUSER CLOSE -->
+
+      <div class="clearfix"></div>
+      
+      <div class="form-group">
+        <%= f.label :title , class: 'col-sm-2 control-label'%>
+        <div class="col-sm-6">
+          <%= f.text_field :title, required: true, class: 'form-control', :placeholder => "Post Title" %>
+        </div>
+        <%= f.label 'Date', class: 'col-sm-1 control-label'%>
+        <div class="col-sm-3">
+          <%= f.text_field  :event_date, required: true, class: 'form-control datepicker' %>
+        </div>
+      </div>  
+      <div class="clearfix"></div>
+      
+      <div class="form-group">
+        <%= f.label :url , class: 'col-sm-2 control-label'%>
+        <div class="col-sm-10">
+          <%= f.text_field :url, required: true, class: 'form-control', :placeholder => "Url Link" %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      
+      
+      <div class="form-group">
+        <%= f.label :quote, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :quote, required: true, class: 'form-control', :placeholder => "quote" %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      
+      <div class="form-group">
+        <%= f.label :excerpt, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :excerpt, required: true, class: 'form-control', :placeholder => "excerpt" %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-2 control-label">
+          <button id="unshow_post_form" class="btn btn-danger btn-block">Cancel</button>
+        </div>
+        <div class=" col-sm-10">
+        <%= f.submit "Post", class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  <% end %>
+<div class="clearfix"></div>
+<hr>
+
