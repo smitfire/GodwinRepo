@@ -4,8 +4,8 @@
 
 var drawBarChart = function() {
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
-      width = 1080 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 1140 - margin.left - margin.right,
+      height = 350 - margin.top - margin.bottom;
 
   var x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], .1);
@@ -27,12 +27,12 @@ var drawBarChart = function() {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
+  d3.select("#bar_chart_cat").selectAll("svg").remove();
   var svg = d3.select("#bar_chart_cat").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   $.get(document.URL, function(err, res, res_data) {
      var data = res_data.responseJSON['stuff'];
      console.log(data);

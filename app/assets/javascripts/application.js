@@ -16,8 +16,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require d3
-//= require users
-//= require categories
-//= require home
 //= require_self
 
