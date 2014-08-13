@@ -76,7 +76,7 @@
       <hr>
       <div class="form-group">
         <div class="col-sm-2 control-label">
-          <button id="unshow_post_form" class="btn btn-danger btn-block">Cancel</button>
+          <%= link_to "Cancel", post_path(@post.id), method: :get, action: :show, class: 'btn btn-block btn-danger' %>
         </div>
         <div class=" col-sm-10">
         <%= f.submit "Post", class: 'btn btn-primary btn-block' %>
