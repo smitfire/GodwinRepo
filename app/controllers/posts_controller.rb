@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.find_all_by_event_date(params[:post])
-    # @posts = Post.find(:all, limit: 9)
-    # @numbers = Post.group(category:).count
-    # render :json => @posts
+    @posts = Post.find_all_by(event_date:params[:post])
   end
   
   def new
@@ -21,6 +18,20 @@ class PostsController < ApplicationController
     @user = @post.user
   end
 
+  def destroy
+    Post.destroy(params[:id])
+    redirect_to user_path(current_user.id)  
+  end
+
+  def edit
+    @post = Post.find(params[:id])    
+  end
+
+  def update
+    post_update(params)
+    redirect_to user_path(current_user.id)
+  end
+  
   def date
     @posts = Post.find_all_by_event_date(Post.find(params[:post_id]).event_date)
     render "tags/_posts_list"

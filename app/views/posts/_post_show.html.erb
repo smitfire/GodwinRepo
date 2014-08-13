@@ -1,8 +1,18 @@
 <% if @post %>
   <% post = @post %>
 <% end %>
-
-
+<% if current_user.id == post.user.id %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= button_to "Delete Post", { action: "destroy", id: post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn btn-block' %>    
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <%= button_to 'Edit Post', edit_post_path(post.id), method: :get,  class: 'btn btn-info btn-block'  %>
+    </div>  
+  </div>
+<%end%>
 
       <div class="row quote">
         <div class="col-md-2 col-md-offset-9">
@@ -31,7 +41,7 @@
       <div class="row details top-margin">
         
         <div class="col-md-8 col-md-offset-2 details-text">
-          <h4><%= link_to post.accuser.title, tag_path(Tag.find_by_title(post.accuser.title)) %> invoked Godwin's Law against <%= link_to post.accused.title, tag_path(Tag.find_by_title(post.accused.title)) %> on 27 March 2014.</h4>
+          <h4><%= link_to post.accuser.title, tag_path(Tag.find_by(title: post.accuser.title)) %> invoked Godwin's Law against <%= link_to post.accused.title, tag_path(Tag.find_by(title: post.accused.title)) %> on 27 March 2014.</h4>
         </div>   
         
       </div><!-- row details -->
