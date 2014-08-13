@@ -3,7 +3,7 @@
       <div class="form-group">
         <%= f.label 'accuser', class: 'col-sm-2 control-label'%>
         <div class="col-sm-6">
-          <%= f.text_field :accuser, class: 'form-control', :placeholder => "Accuser" %>
+          <%= f.text_field :accuser, required: true, class: 'form-control', :placeholder => "Accuser" %>
         </div>
         <%= f.label 'Accuser Category', class: 'col-sm-2 control-label'%>
         <div class="col-sm-1">
@@ -15,7 +15,7 @@
       <div class="form-group">
         <%= f.label 'Accused', class: 'col-sm-2 control-label'%>
         <div class="col-sm-6">
-          <%= f.text_field  :accused, class: 'form-control', placeholder: 'Accused' %>
+          <%= f.text_field  :accused, required: true, class: 'form-control', placeholder: 'Accused' %>
         </div>
         <%= f.label 'Accused Category', class: 'col-sm-2 control-label'%>
         <div class="col-sm-1">
@@ -29,11 +29,11 @@
       <div class="form-group">
         <%= f.label :title , class: 'col-sm-2 control-label'%>
         <div class="col-sm-6">
-          <%= f.text_field :title, class: 'form-control', :placeholder => "Post Title" %>
+          <%= f.text_field :title, required: true, class: 'form-control', :placeholder => "Post Title" %>
         </div>
         <%= f.label 'Date', class: 'col-sm-1 control-label'%>
         <div class="col-sm-3">
-          <%= f.text_field  :event_date, class: 'form-control datepicker' %>
+          <%= f.text_field  :event_date, required: true, class: 'form-control datepicker' %>
         </div>
       </div>  
       <div class="clearfix"></div>
@@ -41,7 +41,7 @@
       <div class="form-group">
         <%= f.label :url , class: 'col-sm-2 control-label'%>
         <div class="col-sm-10">
-          <%= f.text_field :url, class: 'form-control', :placeholder => "Url Link" %>
+          <%= f.text_field :url, required: true, class: 'form-control', :placeholder => "Url Link" %>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -50,7 +50,7 @@
       <div class="form-group">
         <%= f.label :quote, class: 'col-sm-2 control-label' %>
         <div class="col-sm-10">
-          <%= f.text_field :quote, class: 'form-control', :placeholder => "quote" %>
+          <%= f.text_field :quote, required: true, class: 'form-control', :placeholder => "quote" %>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -58,7 +58,7 @@
       <div class="form-group">
         <%= f.label :excerpt, class: 'col-sm-2 control-label' %>
         <div class="col-sm-10">
-          <%= f.text_field :excerpt, class: 'form-control', :placeholder => "excerpt" %>
+          <%= f.text_field :excerpt, required: true, class: 'form-control', :placeholder => "excerpt" %>
         </div>
       </div>
       <div class="clearfix"></div>

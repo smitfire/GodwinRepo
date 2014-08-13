@@ -1,9 +1,8 @@
 <% if @post %>
   <% post = @post %>
 <% end %>
-
-
-
+<% if current_user %>
+<%= button_to "Delete Post", { action: "destroy", id: post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn' %><%end%>
       <div class="row quote">
         <div class="col-md-2 col-md-offset-9">
           <button class="btn btn-default btn-sm pull-right">
