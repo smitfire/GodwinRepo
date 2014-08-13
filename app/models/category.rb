@@ -5,34 +5,69 @@ class Category < ActiveRecord::Base
 	has_many :accuser_posts, through: :accusers, source: :posts
 	has_many :accused_posts, through: :accuseds, source: :posts
 	
-    def total_number_of_posts
+    def total_posts
       self.accused_posts.length + self.accuser_posts.length
     end
 
     def freq_of_occurence
-      self.total_number_of_posts / Post.count.to_f
+      self.total_posts / Post.count.to_f
     end
+
+    def total_likes_accuser_posts
+      count = 0
+      self.accuser_posts.each do |post|
+        count += post.likes.length
+      end
+      count
+    end
+
+    def total_likes_accused_posts
+      count = 0
+      self.accuser_posts.each do |post|
+        count += post.likes.length
+      end
+      count
+    end
+
+    def total_likes
+      self.total_likes_accused_posts + self.total_likes_accuser_posts
+    end
+
+    def total_comments
+      count = 0
+      self.accuser_posts.each do |post|
+        count += post.comments.length
+      end
+      self.accused_posts.each do |post|
+        count += post.comments.length
+      end
+      count
+    end
+
+    def comment_ratio
+      (self.total_posts / Comment.count.to_f)*100
+    end
+
+    def like_ratio
+      (self.total_posts / self.total_likes.to_f )
+    end
+    
 
     def self.build_json_res
       my_hash = {stuff: []}
-      self.all.each do |cat|
-        my_hash[:stuff] << { letter: cat.title, frequency: cat.freq_of_occurence }
-        my_hash[:stuff] << { letter: cat.title + ' accuser', frequency: cat.accuser_posts.count/Post.count.to_f }
-      end 
+      self.all.each do  |category|
+        my_hash[:stuff] << { 
+          'State' => category.title, 
+          "Total Posts"  => category.total_posts,
+          "Ratio of Posts" => category.freq_of_occurence * category.total_posts,
+          "Number of times Category is Accuser" => category.accuser_posts.count,
+          "Number of times Category is Accused" => category.accused_posts.count
+          # "NUmber of Likes for Category" => category.total_likes,
+          # "Ratio of Comments on Category" => category.comment_ratio,
+          # "Like Ratio " => category.like_ratio
+        }
+      end
       my_hash
     end
-    # def self.build_json_res
-    #   my_hash = { stuff:
-    #     [
-    #       {"State":"CA","Under 5 Years":"2704659","5 to 13 Years":"4499890","14 to 17 Years":"2159981","18 to 24 Years":"3853788","25 to 44 Years":"10604510","45 to 64 Years":"8819342","65 Years and Over":"4114496"},
-    #       {"State":"TX","Under 5 Years":"2027307","5 to 13 Years":"3277946","14 to 17 Years":"1420518","18 to 24 Years":"2454721","25 to 44 Years":"7017731","45 to 64 Years":"5656528","65 Years and Over":"2472223"},
-    #       {"State":"NY","Under 5 Years":"1208495","5 to 13 Years":"2141490","14 to 17 Years":"1058031","18 to 24 Years":"1999120","25 to 44 Years":"5355235","45 to 64 Years":"5120254","65 Years and Over":"2607672"},
-    #       {"State":"FL","Under 5 Years":"1140516","5 to 13 Years":"1938695","14 to 17 Years":"925060","18 to 24 Years":"1607297","25 to 44 Years":"4782119","45 to 64 Years":"4746856","65 Years and Over":"3187797"},
-    #       {"State":"IL","Under 5 Years":"894368","5 to 13 Years":"1558919","14 to 17 Years":"725973","18 to 24 Years":"1311479","25 to 44 Years":"3596343","45 to 64 Years":"3239173","65 Years and Over":"1575308"},
-    #       {"State":"PA","Under 5 Years":"737462","5 to 13 Years":"1345341","14 to 17 Years":"679201","18 to 24 Years":"1203944","25 to 44 Years":"3157759","45 to 64 Years":"3414001","65 Years and Over":"1910571"}
-    #     ]
-    #   }
-    #   my_hash
-    # end
 
 end
