@@ -16,22 +16,7 @@
 
       <div class="row quote">
         <div class="col-md-2 col-md-offset-9">
-          <button class="btn btn-default btn-sm pull-right">
-            <%=post.likes.count%>
-          </button>
-          <% if current_user %>
-            <span class="pull-right">
-              <%= form_for :like, class: 'form form-inline', url: likes_path do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :post_id, value: post.id %>
-                <%= f.submit "+", class: "btn btn-success btn-sm" %>  
-              <%end%>
-            </span>
-          <%else%>
-            <button class=" btn btn-success pull-right btn-sm plusit">
-              +
-            </button>
-          <%end%>
+          <%= render partial: 'likes/new', locals: {post: post} %>
         </div>
         <div class="col-md-8 col-md-offset-2 btn-sm excerpt">
           <h3><%= post.quote %></h3>
