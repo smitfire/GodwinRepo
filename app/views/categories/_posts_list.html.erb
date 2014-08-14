@@ -1,4 +1,3 @@
-
 <% if @posts_accused %>
 	<% @posts = @posts_accused %>
 <% elsif @posts_accuser %> 
@@ -60,22 +59,7 @@
 			<% post.tags.each do |tag|%>
 					<%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-sm btn-default' %>
 			<%end%>
-			<button class="pull-right btn btn-default btn-sm">
-				<%=post.likes.count%>
-			</button>
-			<% if current_user %>
-			<span class="pull-right">
-				<%= form_for :like, class: 'form form-inline pull-right', url: likes_path do |f| %>
-					<%= f.hidden_field :user_id, value: current_user.id %>
-					<%= f.hidden_field :post_id, value: post.id %>
-					<%= f.submit "+", class: "btn btn-success btn-sm" %>	
-				<%end%>
-			</span>	
-			<%else%>
-				<button class="pull-right btn btn-success btn-sm plusit">
-					+
-				</button>
-			<%end%>
+			<%= render partial: 'likes/new', locals: {post: post} %>
 			<hr>
 			</div><!-- recent entry -->
 		</div>

@@ -16,13 +16,14 @@ GodwinRepo::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :posts do
     get 'date'
+    resources :likes, only: [:new, :create, :destroy]
   end
   resources :categories
   resources :users do
     
   end
+  # resources :likes
   resources :tags
-  resources :likes
   resources :sessions
 
   # Example resource route with options:
