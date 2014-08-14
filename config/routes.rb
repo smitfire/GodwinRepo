@@ -17,12 +17,12 @@ GodwinRepo::Application.routes.draw do
   resources :posts do
     get 'date'
     resources :likes, only: [:new, :create, :destroy]
+    resources :comments, only: [:new, :create, :destroy]
   end
   resources :categories
   resources :users do
-    
+  
   end
-  # resources :likes
   resources :tags
   resources :sessions
 

@@ -69,16 +69,29 @@
         <h3>Comments:</h3>
       </div>
     </div>
-
     <% post.comments.each do |comment| %>
     <div class="row comments">  
       <div class="col-md-8 comment col-md-offset-2">  
-        <h4 class="comment-author"><%= link_to comment.user.name.capitalize, user_path(comment.user.id) %></h4><br/> <!-- comment author -->
-        <p class="bg-success comment-text">
-          <%= comment.content %>
-        </p>
-      </div><!-- comment-text-->
+        <h4 class="comment-author">
+          <%= link_to comment.user.name.capitalize, user_path(comment.user.id) %>
+        </h4>
+        
+        
+        <blockquote>
+          <p class="comment-text">
+            <%= comment.content %>
+        <% if current_user.id == comment.user.id %>
+          <span class="">
+            <%= button_to 'Delete', post_comment_path(post.id, comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn-sm' %> 
+          </span>
+        <% end %>
+          </p>
+       </blockquote> 
+      </div><!-- comment-->
     </div>
     <% end %>
+    <div id="comment_form" >
+      <%= render partial: 'comments/new', locals: { post: post } %>
+    </div>
 
 
