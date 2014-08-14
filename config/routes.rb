@@ -1,8 +1,5 @@
 GodwinRepo::Application.routes.draw do
   
-  
-  
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,15 +11,18 @@ GodwinRepo::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
+  resources :users do
+    resources :likes, only: [:index]
+    resources :comments, only: [:index]
+  end
+  
   resources :posts do
     get 'date'
-    resources :likes, only: [:new, :create, :destroy]
-    resources :comments, only: [:new, :create, :destroy]
+    resources :likes, only: [:create,]
+    resources :comments, only: [:create, :destroy]
   end
-  resources :categories
-  resources :users do
   
-  end
+  resources :categories
   resources :tags
   resources :sessions
 
