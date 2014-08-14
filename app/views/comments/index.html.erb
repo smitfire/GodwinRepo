@@ -1,0 +1,14 @@
+<% @comments.each do |comment| %>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <h3>
+        <%= link_to comment.post.title.capitalize, post_path(comment.post.id) %>    
+      </h3>
+    </div>
+    <div class="col-md-7">
+      <blockquote>
+        <%= comment.content %>
+      </blockquote>
+    </div>
+  </div>
+<% end %>

@@ -36,4 +36,14 @@ class ApplicationController < ActionController::Base
     post.tags[0].update( title:post.accuser.title)
     post.tags[1].update( title: post.accused.title)
   end
+
+  def build_pie_chart(user_id)
+    user= User.find(user_id)
+    render json: { pieChart: [  
+        { color:"red", description: "Likes Received", title: user.twitter.capitalize, value: user.total_likes_received},
+        { color: "blue", description: "Comments Received", title: "User since: #{user.created_at.strftime("%B %d, %Y")}", value: user.comments_received.length }
+                ] }
+  end
+  helper_method :build_pie_chart
+  
 end

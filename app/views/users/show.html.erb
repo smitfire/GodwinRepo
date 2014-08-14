@@ -23,7 +23,6 @@
 
 	<div class="col-md-3 col-md-offset-1">
 		<ul class="user-stats">
-			<li><small>User: </small><span class="glyphicon glyphicon-star"></span> <!-- people will go nuts for special flair --><%= link_to @user.name.capitalize, user_path(@user.id) %></h3></li>
 			<li><small>User since: </small><%=@user.created_at.strftime("%B %d, %Y")%><!-- user.join_date ? --></li>
 			<!-- we should probably either take this our after dev or provide an show/hide email toggle for users -->
 			<li><small>Email address: </small><%= @user.email %></li>
@@ -33,16 +32,19 @@
 	<div class="col-md-3">
 		<ul class="user-stats">
 			<li><small>Posts: </small><%=@user.posts.count%><!-- user.post_count ? --> </li>
-			<li><small>Comments: </small><%=@user.comments.count%><!-- user.comment_count ? --></li>
-			<li><small>Posts Liked By Others:</small> <%=@user.post_likes_received.count%></li>
+			<li>
+				<%=link_to "User Comments:  #{@user.comments.count}",  user_comments_path(@user.id), class: '' %><!-- user.comment_count ? -->
+			</li>
 			<li><small>Comments Received: </small><%=@user.comments_received.count%><!-- user.comment_count ? --></li>
 		</ul>
 	</div>	
 	<div class="col-md-3">
 		<ul class="user-stats">
-			<li><small>User Likes:</small> <%=@user.likes.count%></li>
+			<li>
+				<%=link_to "User Likes:  #{@user.likes.count}",  user_likes_path(@user.id), class: '' %>
+			</li>
 			<li><small>Comments Liked By Others:</small> <%=@user.comment_likes_received.count%></li>
-			<li><small>Total Liked By Others:</small> <%=@user.total_likes_received%></li>
+			<li><small>Total Likes Received:</small> <%=@user.total_likes_received%></li>
 		</ul>			
 	</div>
 	<div class="clearfix"></div>
