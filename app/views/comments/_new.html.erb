@@ -1,0 +1,14 @@
+<%= form_for :comment, class: 'form-horizontal center', url: post_comments_path(post.id) do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <%= f.text_field :content, required: true, class: 'form-control', :placeholder => "Leave a Comment Here" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.submit 'Comment', class: "btn btn-info btn-block"  %>
+    </div>
+  </div>  
+<% end %>
+
+<div class="clearfix"></div>
