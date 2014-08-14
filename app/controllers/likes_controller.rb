@@ -3,8 +3,14 @@ class LikesController < ApplicationController
   end
 
   def create
-  	Like.create(like_params)
-  	redirect_to root_url
+    puts "="*100
+    puts like_params
+    puts "="*100
+    if request.xhr?
+      @like = Like.create(like_params)
+      @post = @like.post
+      render json: @post.likes.count
+    end
   end
 
   def update

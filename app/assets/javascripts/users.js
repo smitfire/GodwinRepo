@@ -137,7 +137,7 @@
                 .text('0 ')
                 .attr('class', 'pieChart--detail--percentage')
                 .attr('x', (position === 'left' ? 0 : infoWidth ) )
-                .attr('y', (position === 'left' ? -130 : height - 130) )
+                .attr('y', (position === 'left' ? -130 : height - 200) )
                 .attr('text-anchor', anchor)
                 .transition()
                 .duration(DURATION)
@@ -155,7 +155,7 @@
                 .text(data.title)
                 .attr('class', 'pieChart--detail--textContainer')
                 .attr('x', (position === 'left' ? 0 : infoWidth - 0))
-                .attr('y', (position === 'left' ? -100 : height-100) )
+                .attr('y', (position === 'left' ? -100 : height-170) )
                 .attr('text-anchor', anchor);
 
             infoContainer.append('line')

@@ -4,14 +4,13 @@
 //= require posts
 
 var ready = function(){
-  $('#post_form').hide();
   $('#show_post_form').on('click', function(event) {
     event.stopPropagation();
-     $('#post_form').show();
+     $('#post_form').removeClass('hidden');
   })
   $('#unshow_post_form').on('click', function(event) {
     event.preventDefault()
-     $('#post_form').hide();
+    $('#post_form').addClass('hidden')
   })
   $( ".datepicker" ).datepicker();
 }
