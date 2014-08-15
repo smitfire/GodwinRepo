@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) 
     @posts = @user.posts
     if request.xhr?
       build_pie_chart(@user.id)

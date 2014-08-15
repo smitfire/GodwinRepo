@@ -8,11 +8,13 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'curb'
 gem 'rails', '4.0.4'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

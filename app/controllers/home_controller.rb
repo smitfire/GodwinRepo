@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@posts = Post.find(:all, limit: 9)
+  	@posts = Post.all.sample(9)
   	
   end
 end

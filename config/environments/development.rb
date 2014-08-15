@@ -26,4 +26,9 @@ GodwinRepo::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+    
+  ENV['GITHUB_KEY'] = "7adac492c8f6b5e7aa45";
+  ENV['GITHUB_SECRET'] = "6eead9dff4344cd240b1c6ba69fba9191f1655b6";
+  ENV['FB_KEY'] = "1546581118903357";
+  ENV['FB_SECRET'] = "f2b68a8ca6418e024e02b95a56f35bfb";
 end
