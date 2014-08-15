@@ -26,12 +26,12 @@ categoryArray.each do |cat|
 end
 
 
-nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', password_confirmation: 'n', pic: "me_prof.jpg"); 
-rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirmation: 'r', pic: "rob.jpeg", twitter: "http://twitter.com/robscharf");
+nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', password_confirmation: 'n', pic: "/me_prof.jpg"); 
+rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirmation: 'r', pic: "/rob.jpeg", twitter: "http://twitter.com/robscharf");
 # bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confirmation: 'b', pic: "b.jpg");
 
 50.times do
-	User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'test', password_confirmation: 'test', pic: 'me_prof.jpg');
+	User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'test', password_confirmation: 'test', pic: '/me_prof.jpg');
 end
 
 CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|

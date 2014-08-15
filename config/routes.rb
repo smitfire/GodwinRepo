@@ -15,6 +15,10 @@ GodwinRepo::Application.routes.draw do
     resources :likes, only: [:index]
     resources :comments, only: [:index]
   end
+ 
+  get "/signout" => "sessions#destroy", :as => :signout
+  get '/auth/:provider/callback', :to => 'sessions#omni_create'
+  get '/auth/failure', :to => 'sessions#failure'
   
   resources :posts do
     get 'date'
@@ -24,7 +28,7 @@ GodwinRepo::Application.routes.draw do
   
   resources :categories
   resources :tags
-  resources :sessions
+  resources :sessions, only: [:create, :destroy, :new]
 
   # Example resource route with options:
   #   resources :products do
