@@ -77,8 +77,9 @@ GodwinRepo::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  ENV['GITHUB_KEY'] = "06b2db5a64c57761bcd7";
-  ENV['GITHUB_SECRET'] = "f95860518d8fff0d6d311d3370a857bd2ccbc5bb";
-  ENV['FB_KEY'] = "1546581118903357";
-  ENV['FB_SECRET'] = "f2b68a8ca6418e024e02b95a56f35bfb";
+ 
+  AWS::S3::Base.establish_connection!(
+    :access_key_id     => ENV['GITHUB_KEY'],
+    :secret_access_key => ENV['GITHUB_SECRET']
+  )
 end
