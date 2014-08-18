@@ -75,10 +75,11 @@ ActiveRecord::Schema.define(version: 20140815093417) do
     t.integer  "accused_id"
     t.integer  "accuser_id"
     t.text     "url"
-    t.string   "title"
     t.text     "quote"
-    t.text     "excerpt"
+    t.text     "context"
     t.string   "event_date"
+    t.integer  "likes_count", default: 0
+    t.integer  "integer",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

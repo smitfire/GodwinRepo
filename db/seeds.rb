@@ -10,14 +10,14 @@ require 'faker'
 require 'csv'
 
 
-User.destroy_all
-Post.destroy_all
-Comment.destroy_all
-Tag.destroy_all
-Category.destroy_all
-Like.destroy_all
-Accused.destroy_all
-Accuser.destroy_all
+User.delete_all
+Post.delete_all
+Comment.delete_all
+Tag.delete_all
+Category.delete_all
+Like.delete_all
+Accused.delete_all
+Accuser.delete_all
 
 categoryArray = ["World_Leader", "Government", "Politician", "Law", "Celebrity"]
 catArr = []
@@ -35,15 +35,12 @@ rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirm
 end
 
 CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
-	
 	# category = Category.find_or_create_by(title: categoryArray.sample)
-	
+
 	accused = Accused.find_or_create_by(title: row['Accused'], category: catArr.sample)
-	
 	accuser = Accuser.find_or_create_by(title: row['Accuser'], category: catArr.sample)
 
-	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, excerpt: row['Notes'], quote: row['Quote'], title: Faker::Name.name, event_date: row['Date'], user: rob)
-
+	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, context: row['Notes'], quote: row['Quote'],  event_date: row['Date'], user: rob, context: Faker::Lorem.sentence(50))
 	post.tags << Tag.find_or_create_by(title: post.accuser.title);
 	post.tags << Tag.find_or_create_by(title: post.accused.title);
 	rand(1..10).times do
