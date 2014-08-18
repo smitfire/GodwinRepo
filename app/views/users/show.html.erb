@@ -1,21 +1,8 @@
 <%= javascript_include_tag params[:controller] %>
-<%= javascript_include_tag 'posts.js' %>
 
 <div class="row">
 	<div class="col-md-3">
 		<h2><%= @user.name.capitalize%>'s Profile</h2>
-	</div>
-	<div class="col-md-2 col-md-offset-6">
-		<% if current_user && current_user.id  == @user.id %>
-			
-				<button id="show_post_form" class="btn btn-default btn-block">
-					Create Post
-				</button>
-			
-			<div id="post_form" class="col-md-12 hidden">
-				<%= render "posts/new" %>
-			</div>
-		<% end %>
 	</div>
 </div><!-- row -->
 

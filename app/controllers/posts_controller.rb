@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:user_id, :url, :accuser_id, :accused_id, :title, :quote, :excerpt, :event_date)
+      params.require(:post).permit(:user_id, :url, :accuser_id, :accused_id,  :quote, :context, :event_date)
     end
 
 end

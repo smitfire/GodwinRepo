@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-  	@posts = Post.all.sample(9)
-  	
+  	@posts = Post.popular.limit(9)
   end
 end
