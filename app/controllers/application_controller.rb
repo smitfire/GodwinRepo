@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
     current_user.posts << post
     accuser = Accuser.find_or_create_by(title: params[:post][:accuser])
     accuser.posts << post
-    Category.find(params[:post][:accuser_category_id]).accusers  << accuser
+    Category.find(params[:post][:accuser_category]).accusers  << accuser
     accused = Accused.find_or_create_by(title: params[:post][:accused])
     accused.posts << post
-    Category.find(params[:post][:accused_category_id]).accuseds  << accused
+    Category.find(params[:post][:accused_category]).accuseds  << accused
     post.tags << Tag.find_or_create_by(title: post.accuser.title);
     post.tags << Tag.find_or_create_by(title: post.accused.title)
   end

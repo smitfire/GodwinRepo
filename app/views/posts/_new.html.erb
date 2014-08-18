@@ -1,5 +1,5 @@
     <%= form_for :post, class: 'form-horizontal center', url: posts_path do |f| %>
-      
+      <% f.hidden_field :user_id, value: current_user.id %>
       <div class="form-group">
         <%= f.label 'accuser', class: 'col-sm-2 control-label'%>
         <div class="col-sm-6">
@@ -7,7 +7,7 @@
         </div>
         <%= f.label 'Accuser Category', class: 'col-sm-2 control-label'%>
         <div class="col-sm-1">
-          <%= f.collection_select :accuser_category_id, Category.all, :id, :title %>
+          <%= f.collection_select :accuser_category, Category.all, :id, :title %>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -19,7 +19,7 @@
         </div>
         <%= f.label 'Accused Category', class: 'col-sm-2 control-label'%>
         <div class="col-sm-1">
-          <%= f.collection_select :accused_category_id, Category.all, :id, :title %>
+          <%= f.collection_select :accused_category, Category.all, :id, :title %>
         </div>
       </div>  
       
