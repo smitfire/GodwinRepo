@@ -4,7 +4,7 @@
 <% if current_user.id == post.user.id %>
   <div class="row">
     <div class="col-md-2">
-      <%= button_to "Delete Post", { action: "destroy", id: post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn btn-block' %>    
+      <%= button_to "Delete Post", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn btn-block' %>    
     </div>
   </div>
   <div class="row">

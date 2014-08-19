@@ -1,0 +1,16 @@
+<%= form_tag search_results_path, method: :get, class: 'form-horizontal center' do %>
+  <div class="form-group">
+    <div class="col-md-5">
+      <%= text_field_tag :accuser, params[:accuser], class: 'form-control', placeholder: 'Accuser' %>
+    </div>
+    <div class="col-md-5">
+      <%= text_field_tag :accused, params[:accused], class: "form-control", placeholder: 'Accused' %>
+    </div>
+    <div class="col-md-2">
+      <%= submit_tag "Search", name: nil, class: 'btn btn-success btn-block' %>
+    </div>
+  </div>
+<% end %>
+<% if @posts %>
+  <%= render 'tags/posts_list' %>
+<% end %>

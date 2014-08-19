@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3 col-md-offset-1">
       <h3>
-        <%= link_to comment.post.title.capitalize, post_path(comment.post.id) %>    
+        <%= link_to "#{comment.post.accuser.title} invoked Godwin against #{comment.post.accused.title}" , post_path(comment.post.id) %>    
       </h3>
     </div>
     <div class="col-md-7">

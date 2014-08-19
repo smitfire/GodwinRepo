@@ -11,23 +11,24 @@ GodwinRepo::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :users do
+  resources :users, only: [:show, :new] do
     resources :likes, only: [:index]
     resources :comments, only: [:index]
   end
- 
+  get '/search' => 'search#index'
+  get '/search/results' => 'search#results'
   get "/signout" => "sessions#destroy", :as => :signout
   get '/auth/:provider/callback', :to => 'sessions#omni_create'
   get '/auth/failure', :to => 'sessions#failure'
   
   resources :posts do
     get 'date'
-    resources :likes, only: [:create,]
+    resources :likes, only: [:create]
     resources :comments, only: [:create, :destroy]
   end
-  
-  resources :categories
-  resources :tags
+
+  resources :categories, only: [:show]
+  resources :tags, only:[:show]
   resources :sessions, only: [:create, :destroy, :new]
 
   # Example resource route with options:
