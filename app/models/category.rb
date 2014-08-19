@@ -76,7 +76,7 @@ class Category < ActiveRecord::Base
         my_arr << {
           'State' => cat.key,
           'freq' => {
-            'low' => cat.accuser_posts.count, 'mid'=> cat.accused_posts.count ,'high'=> cat.total_posts
+            'accuser_posts' => cat.accuser_posts.count, 'accused_posts'=> cat.accused_posts.count ,'total_posts'=> cat.total_posts
           }
         }
       end
