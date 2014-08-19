@@ -27,7 +27,7 @@ GodwinRepo::Application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :categories, only: [:show]
+  resources :categories, only: [:show, :index]
   resources :tags, only:[:show, :index]
   resources :sessions, only: [:create, :destroy, :new]
 

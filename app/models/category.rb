@@ -53,7 +53,7 @@ class Category < ActiveRecord::Base
     end
     
 
-    def self.build_json_res
+    def self.build_json_res_for_cat_index
       my_hash = {stuff: []}
       self.all.each do  |category|
         my_hash[:stuff] << { 
@@ -68,6 +68,19 @@ class Category < ActiveRecord::Base
         }
       end
       my_hash
+    end
+
+    def build_json_res_for_cat
+      my_arr = []
+      Category.all.each do |cat|
+        my_arr << {
+          'State' => cat.key,
+          'freq' => {
+            'low' => cat.accuser_posts.count, 'mid'=> cat.accused_posts.count ,'high'=> cat.total_posts
+          }
+        }
+      end
+      my_arr
     end
 
 end
