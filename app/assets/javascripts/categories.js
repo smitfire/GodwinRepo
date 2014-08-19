@@ -8,7 +8,7 @@ var drawBarChart = function() {
       height = 350 - margin.top - margin.bottom;
 
   var x0 = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1);
+      .rangeRoundBands([0, width], 0.1);
 
   var x1 = d3.scale.ordinal();
 
@@ -33,9 +33,9 @@ var drawBarChart = function() {
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   $.get(document.URL, function(err, res, res_data) {
      var data = res_data.responseJSON['stuff'];
-     console.log(data);
      // console.log(data);
       var ageNames = d3.keys(data[0]).filter(function(key) { return key !== "State"; });
 
@@ -98,12 +98,12 @@ var drawBarChart = function() {
         .text(function(d) { return d; });
 
   });
-}
+};
 
 var data_fetch_2 = function(url) {
     $.get(document.URL, function(err, res, data) {
        var myData = data.responseJSON['stuff'];
-       console.log(myData)
+       // console.log(myData);
     });
 };
 // $(document).ready(data_fetch_2);
