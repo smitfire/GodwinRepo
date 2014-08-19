@@ -1,16 +1,28 @@
 <%= form_tag search_results_path, method: :get, class: 'form-horizontal center' do %>
   <div class="form-group">
-    <div class="col-md-5">
-      <%= text_field_tag :accuser, params[:accuser], class: 'form-control', placeholder: 'Accuser' %>
+    <div class="col-md-2">
+        <h5>
+          Accuser Category:
+        </h5>
     </div>
-    <div class="col-md-5">
-      <%= text_field_tag :accused, params[:accused], class: "form-control", placeholder: 'Accused' %>
+    <div class="col-md-3">
+      <% cats_array = Category.all.map { |cat| [cat.title, cat.id] } %>
+      <%= select_tag( :accuser_category, options_for_select(cats_array)) %> 
+    </div>
+    <div class="col-md-2">
+      <h5>
+        Accused Category:
+      </h5>
+    </div>
+    <div class="col-md-3">
+      <%= select_tag( :accused_category, options_for_select(cats_array)) %>
     </div>
     <div class="col-md-2">
       <%= submit_tag "Search", name: nil, class: 'btn btn-success btn-block' %>
     </div>
   </div>
 <% end %>
+<hr>
 <% if @posts %>
   <%= render 'tags/posts_list' %>
 <% end %>
