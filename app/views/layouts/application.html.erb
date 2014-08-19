@@ -29,12 +29,16 @@
               </li>   
             <% else %>
               <li>
-                <%= link_to 'Sign in With Github', '/auth/github', class: 'btn btn-default' %>
-                <%= link_to 'Sign in With Facebook', '/auth/facebook', class: 'btn btn-info' %>
                 <%= render "users/sign_in" %>
              </li>
-           <li>
+             <li>
               <%= link_to "Sign Up", new_user_path, class: ' btn btn-default' %>
+             </li>
+             <li>
+               <%= link_to 'Sign in With Facebook', '/auth/facebook', class: 'btn btn-info' %>
+             </li>
+               <%= link_to 'Sign in With Github', '/auth/github', class: 'btn btn-default' %>
+           <li>
              <%end%>
             </li>
             </ul>
@@ -48,12 +52,11 @@
                 <%= link_to "About", page_path("about") %>
               </li>
               <li>
-                <a href="#contact">
-                  Contact
-                </a>
+                <%= link_to "Posts", posts_path %>
+                <!-- <input type="search" class="form-control" placeholder="Search"> -->
               </li>
               <li>
-                <input type="search" class="form-control" placeholder="Search">
+                <%= link_to "Tags", tags_path %>
               </li>
             </ul>
           </nav>

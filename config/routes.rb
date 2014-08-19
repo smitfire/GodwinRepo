@@ -28,7 +28,7 @@ GodwinRepo::Application.routes.draw do
   end
 
   resources :categories, only: [:show]
-  resources :tags, only:[:show]
+  resources :tags, only:[:show, :index]
   resources :sessions, only: [:create, :destroy, :new]
 
   # Example resource route with options:

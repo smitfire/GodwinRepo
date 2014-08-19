@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.find_all_by(event_date:params[:post])
+    # @posts = Post.find_all_by(event_date:params[:post])
+    @posts = Post.popular
   end
   
   def new
@@ -15,7 +16,6 @@ class PostsController < ApplicationController
 
   def show  
     @post = Post.find(params[:id]) 
-    @user = @post.user
   end
 
   def destroy

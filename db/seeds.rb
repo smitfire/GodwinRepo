@@ -6,9 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
-
 require 'csv'
-
 
 User.delete_all
 Post.delete_all
@@ -19,30 +17,36 @@ Like.delete_all
 Accused.delete_all
 Accuser.delete_all
 
-categoryArray = ["World_Leader", "Government", "Politician", "Law", "Celebrity"]
-catArr = []
-categoryArray.each do |cat|
-	catArr << Category.create(title: cat)
+category_arr = [
+	["WLP","World Leader or Politician"], 
+	["CML", "Country, Administration or Law"],
+	["PPP" , "Party, Pol. Organization, Philosophy"],
+	["CP" , "Celebrity or Prominent Indiv"], 
+	["PJN" ,"Pundit, Journalist, or News Outlet"] ,
+	["M" ,"Misc"]
+]
+category_arr.each do |cat|
+	Category.create(key: cat[0], title: cat[1])
 end
 
-
-nick = User.create(name: 'nick', email: 'n@n.com', password: 'n', password_confirmation: 'n', pic: "/me_prof.jpg"); 
 rob = User.create(name: 'rob', email: 'r@r.com', password: 'r', password_confirmation: 'r', pic: "/rob.jpeg", twitter: "http://twitter.com/robscharf");
-# bane = User.create(name: 'bane', email: 'b@b.com', password: 'b', password_confirmation: 'b', pic: "b.jpg");
-
 50.times do
 	User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'test', password_confirmation: 'test', pic: '/me_prof.jpg');
 end
 
-CSV.foreach('db/nazi_references-g.csv', :headers => true) do |row|
-	# category = Category.find_or_create_by(title: categoryArray.sample)
+CSV.foreach('db/nazi_references_2.csv', :headers => true) do |row|
+	
+	accused_category = Category.find_or_create_by(key: row['Accused Category'])
+	accuser_category = Category.find_or_create_by(key: row['Accuser Category'])
 
-	accused = Accused.find_or_create_by(title: row['Accused'], category: catArr.sample)
-	accuser = Accuser.find_or_create_by(title: row['Accuser'], category: catArr.sample)
+	accused = Accused.find_or_create_by(title: row['Accused'], category: accused_category)
+	accuser = Accuser.find_or_create_by(title: row['Accuser'], category: accuser_category)
 
-	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, context: row['Notes'], quote: row['Quote'],  event_date: row['Date'], user: rob, context: Faker::Lorem.sentence(50))
+	post = Post.create(url: row['Source'], accused: accused, accuser: accuser, context: row['Notes'], quote: row['Quote'],  event_date: row['Date'], user: rob)
+
 	post.tags << Tag.find_or_create_by(title: post.accuser.title);
 	post.tags << Tag.find_or_create_by(title: post.accused.title);
+
 	rand(1..10).times do
 		post.likes << Like.create(user: User.all.sample)
 	end
