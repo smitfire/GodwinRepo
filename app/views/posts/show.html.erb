@@ -1,39 +1,37 @@
-<% if @post %>
-  <% post = @post %>
-<% end %>
-<% if current_user == post.user %>
+
+<% if current_user == @post.user %>
   <div class="row">
     <div class="col-md-2">
-      <%= button_to "Delete Post", { action: "destroy", id: post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn btn-block' %>    
+      <%= button_to "Delete Post", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn btn-block' %>    
     </div>
   </div>
   <div class="row">
     <div class="col-md-2">
-      <%= button_to 'Edit Post', edit_post_path(post.id), method: :get,  class: 'btn btn-info btn-block'  %>
+      <%= button_to 'Edit Post', edit_post_path(@post.id), method: :get,  class: 'btn btn-info btn-block'  %>
     </div>  
   </div>
 <%end%>
 
       <div class="row quote">
         <div class="col-md-2 col-md-offset-9">
-          <%= render partial: 'likes/new', locals: {post: post} %>
+          <%= render partial: 'likes/new', locals: {post: @post} %>
         </div>
         <div class="col-md-8 col-md-offset-2 btn-sm excerpt">
-          <h3><%= post.quote %></h3>
+          <h3><%= @post.quote %></h3>
         </div>
       </div> <!-- row -->
 
       <div class="row details top-margin">
         
         <div class="col-md-8 col-md-offset-2 details-text">
-          <h4><%= link_to post.accuser.title, tag_path(Tag.find_by(title: post.accuser.title)) %> invoked Godwin's Law against <%= link_to post.accused.title, tag_path(Tag.find_by(title: post.accused.title)) %> on <%= link_to post.event_date, post_date_path(post), class: "" %>.</h4>
+          <h4><%= link_to @post.accuser.title, tag_path(Tag.find_by(title: @post.accuser.title)) %> invoked Godwin's Law against <%= link_to @post.accused.title, tag_path(Tag.find_by(title: @post.accused.title)) %> on <%= link_to @post.event_date, post_date_path(@post), class: "" %>.</h4>
         </div>   
         
       </div><!-- row details -->
 
       <div class="row context top-margin">
         <div class="col-md-8 col-md-offset-2 context-text">
-          <h4>Context:<small><%= post.context %></small></h4> <!-- !!  need post.context !! -->
+          <h4>Context:<small><%= @post.context %></small></h4> <!-- !!  need post.context !! -->
         </div>   
       </div>
 
@@ -42,7 +40,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-offset-1">
           <h4>Liked By: 
-          <%post.likers.each do |liker| %>
+          <%@post.likers.each do |liker| %>
           <span class="glyphicon glyphicon-star"></span> 
             <%= link_to liker.name.capitalize, user_path(liker.id), class: "" %>
           <%end%>
@@ -54,7 +52,7 @@
         
         <div class="col-md-5 col-md-offset-1">
           <h4> Submitted by:
-          <span class="glyphicon glyphicon-star"></span> <%= link_to post.user.name.capitalize, user_path(post.user.id) %>
+          <span class="glyphicon glyphicon-star"></span> <%= link_to @post.user.name.capitalize, user_path(@post.user.id) %>
           </h4>
           <h4>
             URL: <a href="<%= @post.url %>">Source Link</a> 
@@ -82,7 +80,7 @@
             <%= comment.content %>
         <% if current_user == comment.user %>
           <span class="">
-            <%= button_to 'Delete', post_comment_path(post.id, comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn-sm' %> 
+            <%= button_to 'Delete', post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn-danger  btn-sm' %> 
           </span>
         <% end %>
           </p>
@@ -92,6 +90,6 @@
     <% end %>
     <% if current_user %>
       <div id="comment_form" >
-        <%= render partial: 'comments/new', locals: { post: post } %>
+        <%= render partial: 'comments/new', locals: { post: @post } %>
       </div>
       <% end %>

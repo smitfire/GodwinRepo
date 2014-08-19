@@ -1,4 +1,4 @@
-    <%= form_for :post, class: 'form-horizontal center', url: posts_path do |f| %>
+    <%= form_for Post.new, class: 'form-horizontal center', url: posts_path do |f| %>
       <% f.hidden_field :user_id, value: current_user.id %>
       <div class="form-group">
         <%= f.label 'accuser', class: 'col-sm-2 control-label'%>
