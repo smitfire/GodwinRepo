@@ -1,7 +1,15 @@
+<%= javascript_include_tag 'tags.js' %>
 <h1>
   Tags List
 </h1>
 <hr>
-<% @tags.each do |tag| %>
-      <%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-md btn-default' %>
-<% end %>
+<div id="searcharea">
+  <input type="search" name="search" id="search" class="form-control" placeholder="Search Tags" />
+</div>
+<div class="clearfix"></div>
+<hr>
+<div id="update">
+  <% @tags.each do |tag| %>
+        <%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-md btn-default' %>
+  <% end %>
+</div>
