@@ -199,11 +199,12 @@ function dashboard(id, fData){
         leg= legend(tF);  // create the legend.
 }
 
-var ready = function(){
+var readyCategory = function(){
   $.get(document.URL, function(err, res, data) {
     // console.log(data.responseJSON);
     var freqData = data.responseJSON;
     dashboard('#dashboard',freqData);
   });
 };
-$(document).ready(ready);
+$(document).ready(readyCategory);
+$(document).on("page:load", readyCategory);
