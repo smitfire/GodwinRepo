@@ -17,6 +17,6 @@
 //= require bootstrap
 //= require d3
 //= require likes
-//= require posts
+//= require home
 //= require_self
 

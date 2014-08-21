@@ -3,16 +3,18 @@
 // You can use CoffeeScript in this file: http://coffeescript.org/
 //= require posts
 
-var ready = function(){
-  $('#show_post_form').on('click', function(event) {
-    event.stopPropagation();
-     $('#post_form').removeClass('hidden');
-  })
-  $('#unshow_post_form').on('click', function(event) {
-    event.preventDefault()
-    $('#post_form').addClass('hidden')
-  })
-  $( ".datepicker" ).datepicker();
-}
-$(document).ready(ready);
-$(document).on("page:load", ready);
+var searchPost = function(){
+  $('#search_post').keyup(function(){
+    var searchVal = $(this).val();
+    var myExp = new RegExp(searchVal, 'i');
+    $('.recent-entry').each(function(){
+      var postVal = $(this).text();
+      if(myExp.test(postVal)){
+        $(this).show();
+      }else{
+        $(this).hide();
+      }
+    });
+  });
+};
+$(document).ready(searchPost);
