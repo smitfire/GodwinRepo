@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
-//= require turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require d3
 //= require likes
 //= require home
+//= require search
 //= require_self
+//= require turbolinks
 

@@ -1,20 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
-//= require posts
 
-var searchPost = function(){
-  $('#search_post').keyup(function(){
-    var searchVal = $(this).val();
-    var myExp = new RegExp(searchVal, 'i');
-    $('.recent-entry').each(function(){
-      var postVal = $(this).text();
-      if(myExp.test(postVal)){
-        $(this).show();
-      }else{
-        $(this).hide();
-      }
-    });
-  });
-};
-$(document).ready(searchPost);
+$(document).ready(searchGodwin('.recent-entry'));
+$(document).on("page:load", searchGodwin('.recent-entry'));

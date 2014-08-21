@@ -2,16 +2,16 @@
 // All this logic will automatically be available in application.js.
 //  You can use CoffeeScript in this file: http://coffeescript.org/
 
-var ready = function(){
+var readyHome = function(){
   $('#show_post_form').on('click', function(event) {
     event.stopPropagation();
      $('#post_form').removeClass('hidden');
   });
   $('#unshow_post_form').on('click', function(event) {
-    event.preventDefault()
-    $('#post_form').addClass('hidden')
+    event.preventDefault();
+    $('#post_form').addClass('hidden');
   });
   $( ".datepicker" ).datepicker();
 };
-$(document).ready(ready);
-$(document).on("page:load", ready);
+$(document).ready(readyHome);
+$(document).on("page:load", readyHome);
