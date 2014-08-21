@@ -13,11 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap
 //= require d3
 //= require likes
 //= require home
 //= require search
-//= require_self
+//= require bootstrap
 //= require turbolinks
+//= require_self
 

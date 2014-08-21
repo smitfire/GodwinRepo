@@ -1,4 +1,3 @@
-<%= javascript_include_tag 'tags.js' %>
 <h1>
   Tags List
 </h1>
@@ -13,3 +12,5 @@
         <%= link_to tag.title.capitalize, tag_path(tag.id), class: 'btn btn-md btn-default' %>
   <% end %>
 </div>
+
+<%= javascript_include_tag 'tags.js' %>
