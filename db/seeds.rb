@@ -20,8 +20,8 @@ Accuser.delete_all
 category_arr = [
 	["WLP","World Leader or Politician"], 
 	["CML", "Country, Administration or Law"],
-	["PPP" , "Party, Pol. Organization, Philosophy"],
-	["CP" , "Celebrity or Prominent Indiv"], 
+	["PPP" , "Party, Political Organization, Philosophy"],
+	["CP" , "Celebrity or Prominent Individual"], 
 	["PJN" ,"Pundit, Journalist, or News Outlet"] ,
 	["M" ,"Misc"]
 ]
