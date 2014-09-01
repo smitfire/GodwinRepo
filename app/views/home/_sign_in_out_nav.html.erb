@@ -1,0 +1,29 @@
+ <ul class="signuporin pull-right">
+   <% if current_user %>
+   <li>
+     <button id="show_post_form" class="btn btn-default btn-block">
+       Create Post
+     </button>
+     <div id="post_form" class="col-md-12 hidden">
+       <%= render "posts/new" %>
+     </div>
+   </li>
+   <li>
+     <%= link_to "Profile Page", user_path(current_user.id), class: 'btn btn-success' %>
+       <%= link_to "Log out", session_path(current_user.id), method: :delete, class: 'btn btn-default' %>
+   </li>   
+ <% else %>
+   <li>
+     <%= render "users/sign_in" %>
+  </li>
+  <li>
+   <%= link_to "Sign Up", new_user_path, class: ' btn btn-default' %>
+  </li>
+  <li>
+    <%= link_to 'Sign in With Facebook', '/auth/facebook', class: 'btn btn-info' %>
+  </li>
+    <%= link_to 'Sign in With Github', '/auth/github', class: 'btn btn-default' %>
+<li>
+  <%end%>
+ </li>
+ </ul>

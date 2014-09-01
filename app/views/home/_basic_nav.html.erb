@@ -1,0 +1,20 @@
+<ul class="nav nav-pills pull-right">
+  <li class="<%= is_active?(root_url) %>">
+    <%= link_to "Home", root_url%>
+  </li>
+  <li class="<%= is_active?(page_path('about')) %>">
+    <%= link_to "About", page_path("about") %>
+  </li>
+  <li class="<%= is_active?(tags_path) %>">
+    <%= link_to "Index", tags_path %>
+  </li>
+  <li class="<%= is_active?(categories_path) %>">
+    <%= link_to "Categories", categories_path %>
+  </li>
+  <li class="<%= is_active?(posts_path) %>">
+    <%= link_to "Posts", posts_path %>
+  </li>
+  <li class="<%= is_active?(search_path) %>">
+    <%= link_to "Search", search_path %>
+  </li>
+</ul>
