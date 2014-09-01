@@ -20,8 +20,8 @@ var likesButton = function(){
               button.text(json);
             }
         });
-        return false
-    })
-}
+        return false;
+    });
+};
 $(document).ready(likesButton);
 $(document).on("page:load", likesButton);
