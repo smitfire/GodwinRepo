@@ -12,6 +12,7 @@ gem 'curb'
 gem 'rails', '4.0.4'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'

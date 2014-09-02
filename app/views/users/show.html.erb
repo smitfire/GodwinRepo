@@ -12,7 +12,7 @@
 		<ul class="user-stats">
 			<li><small>User since: </small><%=@user.created_at.strftime("%B %d, %Y")%><!-- user.join_date ? --></li>
 			<!-- we should probably either take this our after dev or provide an show/hide email toggle for users -->
-			<li><small>Email address: </small><%= @user.email %></li>
+			
 			<li><small>Twitter: </small> <a href="<%=@user.twitter%>">@RobScharf</a> <!-- @user.twitter ? --></li>
 		</ul>
 	</div>	
