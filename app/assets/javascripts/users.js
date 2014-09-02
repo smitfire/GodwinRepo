@@ -135,7 +135,7 @@
             infoContainer.data([data.value])
                 .append('text')
                 .text('0 ')
-                .attr('class', 'pieChart--detail--percentage')
+                .attr('class', (position === 'left' ? 'pieChart--detail--percentage pieChart__red' : 'pieChart--detail--percentage pieChart__blue'))
                 .attr('x', (position === 'left' ? 0 : infoWidth ) )
                 .attr('y', (position === 'left' ? -130 : height - 200) )
                 .attr('text-anchor', anchor)

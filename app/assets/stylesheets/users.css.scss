@@ -262,9 +262,7 @@ body {
 .pieChart--detail--percentage {
   font-size: $f-sizePieChartPercentage;
   font-weight: $f-weightPieChartPercentage;
-  
-  fill: $c-baseColor;
-  // stroke-width: 1px;
+  stroke-width: 1px;
 }
 
 .pieChart--detail--textContainer {
@@ -273,8 +271,7 @@ body {
   padding: 5px;
   margin: 5px;
   height: 100px;
-  // outline:red solid 1px;
-  
+  // outline:red solid 1px;  
   // color: $c-baseColorBright;
   font-style: italic;
 }
