@@ -31,4 +31,6 @@ GodwinRepo::Application.configure do
   ENV['GITHUB_SECRET'] = "6eead9dff4344cd240b1c6ba69fba9191f1655b6";
   ENV['FB_KEY'] = "1546581118903357";
   ENV['FB_SECRET'] = "f2b68a8ca6418e024e02b95a56f35bfb";
+  ENV['TW_KEY'] = "o75KIHOV7SgbjbEUEHURMFoG4";
+  ENV['TW_SECRET'] = "QisB0pBoURZ9pBLLw0V6iHOxY5AQlaIc8jUECgCZAA4Uqqwhdj";
 end
